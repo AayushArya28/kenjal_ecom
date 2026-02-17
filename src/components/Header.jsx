@@ -6,11 +6,12 @@ const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const location = useLocation();
 
+    const pdfUrl = '/kenjal-catalogue.pdf';
+
     const navLinks = [
         { name: 'Home', to: '/' },
         { name: 'About Us', to: '/about' },
         { name: 'Products', to: '/products' },
-        { name: 'Catalogue', to: '/catalogue' },
         { name: 'Contact Us', to: '/contact' }
     ];
 
@@ -71,6 +72,17 @@ const Header = () => {
                                     {link.name}
                                 </Link>
                             ))}
+                            <a href={pdfUrl} target="_blank" rel="noopener noreferrer"
+                                className="nav-link"
+                                style={{
+                                    textDecoration: 'none',
+                                    color: '#374151',
+                                    fontWeight: 400,
+                                    fontSize: '14px',
+                                    paddingBottom: '4px', position: 'relative'
+                                }}>
+                                Catalogue
+                            </a>
                         </nav>
 
                         {/* Search + Icons + Hamburger */}
@@ -139,6 +151,20 @@ const Header = () => {
                                     {link.name}
                                 </Link>
                             ))}
+                            <a href={pdfUrl} target="_blank" rel="noopener noreferrer"
+                                onClick={() => setIsMenuOpen(false)}
+                                style={{
+                                    textDecoration: 'none',
+                                    color: '#374151',
+                                    fontWeight: 400,
+                                    fontSize: '16px', padding: '12px 8px',
+                                    borderRadius: '6px',
+                                    backgroundColor: 'transparent',
+                                    transition: 'background-color 0.2s',
+                                }}
+                            >
+                                Catalogue
+                            </a>
                         </div>
                     </div>
                 </div>

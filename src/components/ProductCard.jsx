@@ -30,7 +30,7 @@ const ProductCard = ({ product }) => {
                 {/* Discount badge */}
                 {product.discount && (
                     <span style={{
-                        position: 'absolute', top: '8px', left: '8px', backgroundColor: '#e63946',
+                        position: 'absolute', top: '8px', left: '8px', backgroundColor: '#2563eb',
                         color: '#fff', fontSize: '10px', fontWeight: 700, padding: '4px 8px',
                         borderRadius: '50px'
                     }}>
@@ -75,7 +75,7 @@ const ProductCard = ({ product }) => {
                     {product.name}
                 </p>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px' }}>
-                    <span style={{ color: '#e63946', fontSize: '15px', fontWeight: 700 }}>₹{product.price}</span>
+                    <span style={{ color: '#2563eb', fontSize: '15px', fontWeight: 700 }}>₹{product.price}</span>
                     {product.originalPrice && (
                         <span style={{ color: '#9ca3af', fontSize: '12px', textDecoration: 'line-through' }}>₹{product.originalPrice}</span>
                     )}

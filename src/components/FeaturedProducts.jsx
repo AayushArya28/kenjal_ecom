@@ -9,6 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const FeaturedProducts = () => {
     const sectionRef = useRef(null);
+    const scrollContainerRef = useRef(null);
 
     useEffect(() => {
         const ctx = gsap.context(() => {
@@ -20,47 +21,73 @@ const FeaturedProducts = () => {
         return () => ctx.revert();
     }, []);
 
+    const scroll = (direction) => {
+        if (scrollContainerRef.current) {
+            const { current } = scrollContainerRef;
+            const scrollAmount = 300; // Updated scroll amount
+            if (direction === 'left') {
+                current.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            } else {
+                current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            }
+        }
+    };
+
     return (
-        <section ref={sectionRef} style={{ padding: '40px 0', backgroundColor: '#fff' }} id="products">
+        <section ref={sectionRef} style={{ padding: '60px 0', backgroundColor: '#fff' }} id="products">
             <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px' }}>
                 {/* Section Header */}
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '32px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '40px' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-                        <div style={{ width: '16px', height: '40px', backgroundColor: '#e63946', borderRadius: '4px' }}></div>
+                        <div style={{ width: '16px', height: '40px', backgroundColor: '#2563eb', borderRadius: '4px' }}></div>
                         <h2 style={{ fontSize: '28px', fontWeight: 700 }}>Flash Sales</h2>
                     </div>
                     <div style={{ display: 'flex', gap: '8px' }}>
-                        <button className="arrow-btn" style={{
-                            width: '40px', height: '40px', borderRadius: '50%', backgroundColor: '#f3f4f6',
+                        <button className="arrow-btn" onClick={() => scroll('left')} style={{
+                            width: '46px', height: '46px', borderRadius: '50%', backgroundColor: '#f3f4f6',
                             display: 'flex', alignItems: 'center', justifyContent: 'center',
-                            border: 'none', cursor: 'pointer'
+                            border: 'none', cursor: 'pointer', transition: 'all 0.2s'
                         }}>
-                            <ChevronLeft style={{ width: '20px', height: '20px' }} />
+                            <ChevronLeft style={{ width: '22px', height: '22px' }} />
                         </button>
-                        <button className="arrow-btn" style={{
-                            width: '40px', height: '40px', borderRadius: '50%', backgroundColor: '#f3f4f6',
+                        <button className="arrow-btn" onClick={() => scroll('right')} style={{
+                            width: '46px', height: '46px', borderRadius: '50%', backgroundColor: '#f3f4f6',
                             display: 'flex', alignItems: 'center', justifyContent: 'center',
-                            border: 'none', cursor: 'pointer'
+                            border: 'none', cursor: 'pointer', transition: 'all 0.2s'
                         }}>
-                            <ChevronRight style={{ width: '20px', height: '20px' }} />
+                            <ChevronRight style={{ width: '22px', height: '22px' }} />
                         </button>
                     </div>
                 </div>
 
-                {/* Products grid */}
-                <div className="products-grid" style={{
-                    display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)',
-                    gap: '32px', marginBottom: '32px'
-                }}>
+                {/* Carousel Container */}
+                <div
+                    ref={scrollContainerRef}
+                    className="products-carousel"
+                    style={{
+                        display: 'flex',
+                        gap: '32px',
+                        overflowX: 'auto',
+                        paddingBottom: '24px',
+                        scrollBehavior: 'smooth',
+                        scrollbarWidth: 'none', // Firefox
+                        msOverflowStyle: 'none' // IE/Edge
+                    }}
+                >
                     {featuredProducts.map((product) => (
-                        <ProductCard key={product.id} product={product} />
+                        <div key={product.id} style={{ minWidth: '280px', flex: '0 0 auto' }}>
+                            <ProductCard product={product} />
+                        </div>
                     ))}
                 </div>
 
+                {/* Spacer */}
+                <div style={{ height: '40px', width: '100%' }}></div>
+
                 {/* View All Products */}
-                <div style={{ display: 'flex', justifyContent: 'center' }}>
-                    <button className="btn-red" style={{
-                        backgroundColor: '#e63946', color: '#fff', fontSize: '14px',
+                <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px', paddingBottom: '16px', position: 'relative', zIndex: 1 }}>
+                    <button className="btn-primary" style={{
+                        backgroundColor: '#2563eb', color: '#fff', fontSize: '14px',
                         fontWeight: 600, padding: '16px 48px', borderRadius: '8px',
                         border: 'none', cursor: 'pointer'
                     }}>
@@ -70,11 +97,8 @@ const FeaturedProducts = () => {
             </div>
 
             <style>{`
-                @media (max-width: 1024px) {
-                    .products-grid { grid-template-columns: repeat(3, 1fr) !important; }
-                }
-                @media (max-width: 768px) {
-                    .products-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 16px !important; }
+                .products-carousel::-webkit-scrollbar {
+                    display: none;
                 }
             `}</style>
         </section>

@@ -66,7 +66,6 @@ const Footer = () => {
                                 { name: 'Home', to: '/' },
                                 { name: 'About Us', to: '/about' },
                                 { name: 'Products', to: '/products' },
-                                { name: 'Catalogue', to: '/catalogue' },
                                 { name: 'Contact Us', to: '/contact' }
                             ].map((item) => (
                                 <li key={item.name} style={{ marginBottom: '12px' }}>
@@ -76,6 +75,12 @@ const Footer = () => {
                                     </Link>
                                 </li>
                             ))}
+                            <li style={{ marginBottom: '12px' }}>
+                                <a href="/kenjal-catalogue.pdf" target="_blank" rel="noopener noreferrer" className="footer-link"
+                                    style={{ color: '#9ca3af', fontSize: '14px', textDecoration: 'none', display: 'inline-block' }}>
+                                    Catalogue
+                                </a>
+                            </li>
                         </ul>
                     </div>
 

@@ -39,6 +39,46 @@ export const featuredProducts = [
         reviews: 99,
         discount: 26,
         image: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=300&h=300&fit=crop'
+    },
+    {
+        id: 13,
+        name: 'Gaming Headset Pro',
+        price: 1299,
+        originalPrice: 1999,
+        rating: 4.5,
+        reviews: 42,
+        discount: 35,
+        image: 'https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=300&h=300&fit=crop'
+    },
+    {
+        id: 14,
+        name: 'Wireless Earbuds',
+        price: 899,
+        originalPrice: 1499,
+        rating: 4,
+        reviews: 120,
+        discount: 40,
+        image: 'https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=300&h=300&fit=crop'
+    },
+    {
+        id: 15,
+        name: 'Smart Watch Series 5',
+        price: 2499,
+        originalPrice: 3999,
+        rating: 5,
+        reviews: 55,
+        discount: 37,
+        image: 'https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=300&h=300&fit=crop'
+    },
+    {
+        id: 16,
+        name: 'Mechanical Keyboard RGB',
+        price: 3499,
+        originalPrice: 4999,
+        rating: 4.8,
+        reviews: 85,
+        discount: 30,
+        image: 'https://images.unsplash.com/photo-1595225476474-87563907a212?w=300&h=300&fit=crop'
     }
 ];
 

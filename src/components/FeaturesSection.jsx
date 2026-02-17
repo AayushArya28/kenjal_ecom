@@ -8,7 +8,7 @@ const FeaturesSection = () => {
     ];
 
     return (
-        <section style={{ padding: '60px 0', backgroundColor: '#fff' }}>
+        <section style={{ padding: '100px 0 60px 0', backgroundColor: '#fff' }}>
             <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px' }}>
                 <div className="features-grid" style={{
                     display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '32px'

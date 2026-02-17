@@ -24,15 +24,15 @@ const BestSellingProducts = () => {
             <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px' }}>
                 {/* Section label */}
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-                    <div style={{ width: '12px', height: '28px', backgroundColor: '#e63946', borderRadius: '3px' }}></div>
-                    <span style={{ color: '#e63946', fontSize: '14px', fontWeight: 600 }}>This Month</span>
+                    <div style={{ width: '12px', height: '28px', backgroundColor: '#2563eb', borderRadius: '3px' }}></div>
+                    <span style={{ color: '#2563eb', fontSize: '14px', fontWeight: 600 }}>This Month</span>
                 </div>
 
                 {/* Heading + View All */}
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '24px' }}>
                     <h2 style={{ fontSize: '24px', fontWeight: 700, color: '#111827' }}>Best Selling Products</h2>
-                    <button className="btn-red" style={{
-                        backgroundColor: '#e63946', color: '#fff', fontSize: '14px', fontWeight: 600,
+                    <button className="btn-primary" style={{
+                        backgroundColor: '#2563eb', color: '#fff', fontSize: '14px', fontWeight: 600,
                         padding: '12px 32px', borderRadius: '8px', border: 'none', cursor: 'pointer'
                     }}>
                         View All

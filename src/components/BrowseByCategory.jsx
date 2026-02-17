@@ -32,8 +32,8 @@ const BrowseByCategory = () => {
             <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px' }}>
                 {/* Section label */}
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-                    <div style={{ width: '12px', height: '28px', backgroundColor: '#e63946', borderRadius: '3px' }}></div>
-                    <span style={{ color: '#e63946', fontSize: '14px', fontWeight: 600 }}>Categories</span>
+                    <div style={{ width: '12px', height: '28px', backgroundColor: '#2563eb', borderRadius: '3px' }}></div>
+                    <span style={{ color: '#2563eb', fontSize: '14px', fontWeight: 600 }}>Categories</span>
                 </div>
 
                 {/* Heading + arrows */}
@@ -68,8 +68,8 @@ const BrowseByCategory = () => {
                             cursor: 'pointer', textAlign: 'center', color: '#374151'
                         }}
                             onMouseEnter={(e) => {
-                                e.currentTarget.style.backgroundColor = '#e63946';
-                                e.currentTarget.style.borderColor = '#e63946';
+                                e.currentTarget.style.backgroundColor = '#2563eb';
+                                e.currentTarget.style.borderColor = '#2563eb';
                                 e.currentTarget.style.color = '#fff';
                             }}
                             onMouseLeave={(e) => {

@@ -48,7 +48,7 @@ const NewArrivals = () => {
             <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px' }}>
                 {/* Section label */}
                 <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '32px' }}>
-                    <div style={{ width: '16px', height: '40px', backgroundColor: '#e63946', borderRadius: '4px' }}></div>
+                    <div style={{ width: '16px', height: '40px', backgroundColor: '#2563eb', borderRadius: '4px' }}></div>
                     <h2 style={{ fontSize: '28px', fontWeight: 700 }}>New Arrival</h2>
                 </div>
 
