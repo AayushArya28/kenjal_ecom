@@ -1,9 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
 @import "tailwindcss";
 
-:root {
-    --primary-red: #e63946;
-    --dark-bg: #1a1a1a;
-    --light-gray: #f5f5f5;
+@theme {
+    --color-primary: #0066cc;
+    --color-primary-dark: #004d99;
+    --color-primary-light: #3399ff;
+    --color-accent-red: #e63946;
+    --color-accent-red-dark: #c5303b;
 }
 
 * {
@@ -13,20 +17,18 @@
 }
 
 body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-        sans-serif;
+    font-family: 'Poppins', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
 }
 
 html {
     scroll-behavior: smooth;
 }
 
-/* Custom scrollbar */
 ::-webkit-scrollbar {
-    width: 10px;
+    width: 8px;
 }
 
 ::-webkit-scrollbar-track {
@@ -34,10 +36,215 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--primary-red);
-    border-radius: 5px;
+    background: #2563eb;
+    border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #d62839;
+    background: #1d4ed8;
+}
+
+/* ===================== PRODUCT CARD ===================== */
+.product-card {
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    border-radius: 8px;
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+}
+
+.product-card img {
+    transition: transform 0.4s ease;
+}
+
+.product-card:hover img {
+    transform: scale(1.08);
+}
+
+/* Add-to-cart bar on hover */
+.product-card .add-to-cart-bar {
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover .add-to-cart-bar {
+    transform: translateY(0);
+}
+
+/* ===================== CATEGORY BOXES ===================== */
+.category-box {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.category-box:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 24px rgba(230, 57, 70, 0.2);
+}
+
+/* ===================== ARRIVAL CARDS ===================== */
+.arrival-card {
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.arrival-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
+}
+
+.arrival-card:hover img {
+    opacity: 0.8 !important;
+    transform: scale(1.05);
+    transition: opacity 0.4s ease, transform 0.6s ease;
+}
+
+/* ===================== FEATURE ICONS ===================== */
+.feature-item {
+    transition: transform 0.3s ease;
+}
+
+.feature-item:hover {
+    transform: translateY(-4px);
+}
+
+.feature-icon-ring {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-item:hover .feature-icon-ring {
+    transform: scale(1.1);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.feature-icon-inner {
+    transition: background-color 0.3s ease;
+}
+
+.feature-item:hover .feature-icon-inner {
+    background-color: #2563eb !important;
+}
+
+/* ===================== BUTTONS ===================== */
+.btn-primary {
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+}
+
+.btn-primary:active {
+    transform: translateY(0) scale(0.98);
+}
+
+.btn-red {
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.btn-red:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 6px 20px rgba(230, 57, 70, 0.4);
+    background-color: #c5303b !important;
+}
+
+.btn-red:active {
+    transform: translateY(0) scale(0.98);
+}
+
+.btn-green {
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.btn-green:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 6px 20px rgba(34, 197, 94, 0.4);
+    background-color: #16a34a !important;
+}
+
+/* ===================== NAV LINKS ===================== */
+.nav-link {
+    position: relative;
+    transition: color 0.2s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #2563eb;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.nav-link:hover {
+    color: #2563eb !important;
+}
+
+/* ===================== ARROW BUTTONS ===================== */
+.arrow-btn {
+    transition: all 0.25s ease;
+}
+
+.arrow-btn:hover {
+    background-color: #2563eb !important;
+    color: #fff !important;
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+/* ===================== FOOTER LINKS ===================== */
+.footer-link {
+    transition: color 0.2s ease, padding-left 0.2s ease;
+}
+
+.footer-link:hover {
+    color: #fff !important;
+    padding-left: 4px;
+}
+
+/* ===================== ICON HOVER ===================== */
+.icon-hover {
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.icon-hover:hover {
+    color: #2563eb !important;
+    transform: scale(1.15);
+}
+
+/* ===================== FADE-IN ANIMATION ===================== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse-soft {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.animate-fade-in-up {
+    animation: fadeInUp 0.6s ease forwards;
 }
