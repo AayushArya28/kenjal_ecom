@@ -91,7 +91,7 @@ const Footer = () => {
                             {['Privacy Policy', 'Terms Of Use', 'FAQ', 'Contact'].map((item) => (
                                 <li key={item} style={{ marginBottom: '12px' }}>
                                     <Link to={item === 'Contact' ? '/contact' : '#'} className="footer-link"
-                                        style={{ color: '#9ca3af', fontSize: '15px', textDecoration: 'none', display: 'inline-block' }}>
+                                        style={{ color: '#9ca3af', fontSize: '14px', textDecoration: 'none', display: 'inline-block' }}>
                                         {item}
                                     </Link>
                                 </li>
