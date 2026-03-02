@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Heart, ShoppingCart, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -85,23 +85,8 @@ const Header = () => {
                             </a>
                         </nav>
 
-                        {/* Search + Icons + Hamburger */}
+                        {/* Hamburger only */}
                         <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-                            <div className="header-search" style={{
-                                display: 'flex', alignItems: 'center', backgroundColor: '#f3f4f6',
-                                borderRadius: '8px', padding: '8px 16px'
-                            }}>
-                                <input type="text" placeholder="What are you looking for?"
-                                    style={{
-                                        background: 'transparent', outline: 'none', fontSize: '14px',
-                                        width: '200px', border: 'none', color: '#374151'
-                                    }}
-                                />
-                                <button style={{ marginLeft: '8px', background: 'none', border: 'none', cursor: 'pointer', fontSize: '16px' }}>🔍</button>
-                            </div>
-                            <Heart className="icon-hover" style={{ width: '22px', height: '22px', cursor: 'pointer', color: '#374151' }} />
-                            <ShoppingCart className="icon-hover" style={{ width: '22px', height: '22px', cursor: 'pointer', color: '#374151' }} />
-
                             {/* Hamburger toggle */}
                             <button
                                 className="header-mobile-toggle"
@@ -171,13 +156,12 @@ const Header = () => {
             </header>
 
             {/* Responsive styles */}
-            <style>{`
+                <style>{`
                 .header-mobile-nav {
                     display: none;
                 }
                 @media (max-width: 768px) {
                     .header-desktop-nav { display: none !important; }
-                    .header-search { display: none !important; }
                     .header-mobile-toggle { display: block !important; }
                     .header-mobile-nav { display: block !important; }
                     .top-banner-content { font-size: 11px !important; gap: 8px !important; }

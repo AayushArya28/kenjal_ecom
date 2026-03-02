@@ -66,8 +66,8 @@ const FeaturedProducts = () => {
                     className="products-carousel"
                     style={{
                         display: 'flex',
-                        gap: '32px',
-                        overflowX: 'auto',
+                        gap: '24px',
+                        overflowX: 'hidden',
                         paddingBottom: '24px',
                         scrollBehavior: 'smooth',
                         scrollbarWidth: 'none', // Firefox
@@ -75,7 +75,7 @@ const FeaturedProducts = () => {
                     }}
                 >
                     {featuredProducts.map((product) => (
-                        <div key={product.id} style={{ minWidth: '280px', flex: '0 0 auto' }}>
+                        <div key={product.id} style={{ minWidth: '240px', flex: '0 0 auto' }}>
                             <ProductCard product={product} />
                         </div>
                     ))}
