@@ -124,30 +124,30 @@ export const bestSellingProducts = [
 export const newArrivals = [
     {
         id: 9,
-        name: 'KENJAL FIGHTER COPPER',
-        description: 'Shop Now',
-        image: 'https://images.unsplash.com/photo-1606813907291-d86efa9b94db?w=800&h=600&fit=crop',
+        name: 'Kenjal Fighter Series',
+        description: 'Advanced RO Technology',
+        image: 'https://i.ibb.co/cS8zgsCH/Untitled-design-20260215-112200-0000-jpg.jpg',
         featured: true
     },
     {
         id: 10,
-        name: 'KENJAL WONDER PLUS',
-        description: 'Shop Now',
-        image: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800&h=400&fit=crop',
+        name: 'Kenjal Roxx',
+        description: 'Stylish & Powerful Pure Water',
+        image: 'https://i.ibb.co/4wGBvCmn/Untitled-design-20260215-112050-0000-jpg.jpg',
         featured: true
     },
     {
         id: 11,
-        name: 'KENJAL FIGHTER IEC',
-        description: 'Shop Now',
-        image: 'https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=400&h=400&fit=crop',
+        name: 'Kenjal Metal Geyser',
+        description: 'Instant Hot Water',
+        image: 'https://i.ibb.co/G4pJKWLB/Untitled-design-20260215-112454-0000-jpg.jpg',
         featured: false
     },
     {
         id: 12,
-        name: 'KENJAL FIGHTER',
-        description: 'Shop Now',
-        image: 'https://images.unsplash.com/photo-1541643600914-78b084683601?w=400&h=400&fit=crop',
+        name: 'Kenjal Geyser - Glassline',
+        description: 'Efficient & Reliable Heating',
+        image: 'https://i.ibb.co/S4LJdY54/Untitled-design-20260215-112413-0000-jpg.jpg',
         featured: false
     }
 ];

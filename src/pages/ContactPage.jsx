@@ -3,19 +3,9 @@ import { Link } from 'react-router-dom';
 import { MapPin, Phone, Mail, Globe, Building2, Facebook } from 'lucide-react';
 
 const ContactPage = () => {
-    const [form, setForm] = useState({
-        name: '', mobile: '', email: '', state: '', city: '', subject: '', message: ''
-    });
+    const [form, setForm] = useState({ message: '' });
 
     const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
-    const handleSubmit = (e) => { e.preventDefault(); alert('Message sent! We will get back to you soon.'); };
-
-    const states = [
-        'Select State', 'Andhra Pradesh', 'Bihar', 'Chhattisgarh', 'Delhi', 'Goa', 'Gujarat',
-        'Haryana', 'Himachal Pradesh', 'Jharkhand', 'Karnataka', 'Kerala', 'Madhya Pradesh',
-        'Maharashtra', 'Odisha', 'Punjab', 'Rajasthan', 'Tamil Nadu', 'Telangana',
-        'Uttar Pradesh', 'Uttarakhand', 'West Bengal'
-    ];
 
     const inputStyle = {
         width: '100%', padding: '12px 16px', backgroundColor: '#f9fafb', border: '1px solid #d1d5db',
@@ -141,54 +131,65 @@ const ContactPage = () => {
                             </div>
                         </div>
 
-                        {/* Right — Feedback Form */}
+                        {/* Right — WhatsApp Query Box */}
                         <div>
                             <div style={{
-                                backgroundColor: '#f9fafb', borderRadius: '16px', padding: '32px',
-                                border: '1px solid #e5e7eb'
+                                backgroundColor: '#fff', borderRadius: '16px', padding: '32px',
+                                border: '1px solid #e5e7eb', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05)'
                             }}>
-                                <h2 style={{ fontSize: '24px', fontWeight: 700, marginBottom: '4px', color: '#111827' }}>Send us a Message</h2>
-                                <p style={{ color: '#2563eb', fontSize: '14px', marginBottom: '24px' }}>We'd love to hear from you.</p>
-
-                                <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
-                                    <input name="name" placeholder="Your Name" value={form.name} onChange={handleChange} style={inputStyle}
-                                        onFocus={(e) => { e.target.style.borderColor = '#2563eb'; e.target.style.boxShadow = '0 0 0 3px rgba(37,99,235,0.1)'; }}
-                                        onBlur={(e) => { e.target.style.borderColor = '#d1d5db'; e.target.style.boxShadow = 'none'; }}
-                                    />
-                                    <input name="mobile" placeholder="Mobile" value={form.mobile} onChange={handleChange} style={inputStyle}
-                                        onFocus={(e) => { e.target.style.borderColor = '#2563eb'; e.target.style.boxShadow = '0 0 0 3px rgba(37,99,235,0.1)'; }}
-                                        onBlur={(e) => { e.target.style.borderColor = '#d1d5db'; e.target.style.boxShadow = 'none'; }}
-                                    />
-                                    <input name="email" type="email" placeholder="Email" value={form.email} onChange={handleChange} style={inputStyle}
-                                        onFocus={(e) => { e.target.style.borderColor = '#2563eb'; e.target.style.boxShadow = '0 0 0 3px rgba(37,99,235,0.1)'; }}
-                                        onBlur={(e) => { e.target.style.borderColor = '#d1d5db'; e.target.style.boxShadow = 'none'; }}
-                                    />
-                                    <select name="state" value={form.state} onChange={handleChange}
-                                        style={{ ...inputStyle, cursor: 'pointer' }}>
-                                        {states.map((s) => <option key={s} value={s === 'Select State' ? '' : s}>{s}</option>)}
-                                    </select>
-                                    <input name="city" placeholder="City" value={form.city} onChange={handleChange} style={inputStyle}
-                                        onFocus={(e) => { e.target.style.borderColor = '#2563eb'; e.target.style.boxShadow = '0 0 0 3px rgba(37,99,235,0.1)'; }}
-                                        onBlur={(e) => { e.target.style.borderColor = '#d1d5db'; e.target.style.boxShadow = 'none'; }}
-                                    />
-                                    <input name="subject" placeholder="Subject" value={form.subject} onChange={handleChange} style={inputStyle}
-                                        onFocus={(e) => { e.target.style.borderColor = '#2563eb'; e.target.style.boxShadow = '0 0 0 3px rgba(37,99,235,0.1)'; }}
-                                        onBlur={(e) => { e.target.style.borderColor = '#d1d5db'; e.target.style.boxShadow = 'none'; }}
-                                    />
-                                    <textarea name="message" placeholder="Message" value={form.message} onChange={handleChange}
-                                        rows={4} style={{ ...inputStyle, resize: 'vertical' }}
-                                        onFocus={(e) => { e.target.style.borderColor = '#2563eb'; e.target.style.boxShadow = '0 0 0 3px rgba(37,99,235,0.1)'; }}
-                                        onBlur={(e) => { e.target.style.borderColor = '#d1d5db'; e.target.style.boxShadow = 'none'; }}
-                                    />
-
-                                    <button type="submit" className="btn-primary" style={{
-                                        backgroundColor: '#2563eb', color: '#fff', padding: '14px 32px',
-                                        borderRadius: '8px', fontWeight: 600, fontSize: '14px', border: 'none',
-                                        cursor: 'pointer', width: '100%', transition: 'background-color 0.2s'
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
+                                    <div style={{
+                                        width: '48px', height: '48px', borderRadius: '12px',
+                                        backgroundColor: '#dcfce7', display: 'flex', alignItems: 'center', justifyContent: 'center'
                                     }}>
-                                        Send Message
+                                        <span style={{ fontSize: '24px' }}>💬</span>
+                                    </div>
+                                    <div>
+                                        <h2 style={{ fontSize: '22px', fontWeight: 700, color: '#111827' }}>Quick Query</h2>
+                                        <p style={{ color: '#22c55e', fontSize: '13px', fontWeight: 600 }}>WhatsApp Us Directly</p>
+                                    </div>
+                                </div>
+
+                                <p style={{ color: '#6b7280', fontSize: '14px', marginBottom: '24px', lineHeight: '1.5' }}>
+                                    Have a question? Type your message below and we'll connect you instantly with our team on WhatsApp.
+                                </p>
+
+                                <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                                    <textarea
+                                        placeholder="Type your query here..."
+                                        value={form.message}
+                                        onChange={(e) => setForm({ ...form, message: e.target.value })}
+                                        rows={6}
+                                        style={{ ...inputStyle, resize: 'none', fontSize: '15px' }}
+                                        onFocus={(e) => { e.target.style.borderColor = '#22c55e'; e.target.style.boxShadow = '0 0 0 3px rgba(34,197,94,0.1)'; }}
+                                        onBlur={(e) => { e.target.style.borderColor = '#d1d5db'; e.target.style.boxShadow = 'none'; }}
+                                    />
+
+                                    <button
+                                        onClick={() => {
+                                            if (!form.message.trim()) {
+                                                alert('Please type a message first.');
+                                                return;
+                                            }
+                                            const encodedMsg = encodeURIComponent(form.message);
+                                            window.open(`https://wa.me/918686154646?text=${encodedMsg}`, '_blank');
+                                        }}
+                                        style={{
+                                            backgroundColor: '#22c55e', color: '#fff', padding: '16px 32px',
+                                            borderRadius: '12px', fontWeight: 700, fontSize: '15px', border: 'none',
+                                            cursor: 'pointer', width: '100%', transition: 'all 0.2s',
+                                            display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px',
+                                            boxShadow: '0 4px 12px rgba(34, 197, 94, 0.2)'
+                                        }}
+                                        onMouseOver={(e) => { e.currentTarget.style.backgroundColor = '#16a34a'; e.currentTarget.style.transform = 'translateY(-1px)'; }}
+                                        onMouseOut={(e) => { e.currentTarget.style.backgroundColor = '#22c55e'; e.currentTarget.style.transform = 'translateY(0)'; }}
+                                    >
+                                        Send on WhatsApp
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                                            <path d="m22 2-7 20-4-9-9-4Z" /><path d="M22 2 11 13" />
+                                        </svg>
                                     </button>
-                                </form>
+                                </div>
                             </div>
 
                             {/* Phone / WhatsApp section */}
