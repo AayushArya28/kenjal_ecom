@@ -13,7 +13,22 @@ const ScrollToTop = () => {
     }, []);
 
     const scrollToTop = () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        const startY = window.scrollY;
+        const duration = Math.min(600 + startY * 0.2, 1200); // scale with distance, cap at 1.2s
+        const startTime = performance.now();
+
+        const easeInOutCubic = (t) =>
+            t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+
+        const step = (currentTime) => {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const eased = easeInOutCubic(progress);
+            window.scrollTo(0, startY * (1 - eased));
+            if (progress < 1) requestAnimationFrame(step);
+        };
+
+        requestAnimationFrame(step);
     };
 
     if (!showScrollTop) return null;

@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Zap } from 'lucide-react';
 import ProductCard from './ProductCard';
 import { featuredProducts } from '../data/products';
 
@@ -15,7 +15,7 @@ const FeaturedProducts = () => {
         const ctx = gsap.context(() => {
             gsap.from(sectionRef.current.querySelectorAll('.product-card'), {
                 scrollTrigger: { trigger: sectionRef.current, start: 'top 80%' },
-                opacity: 0, y: 60, duration: 0.8, stagger: 0.15, ease: 'power2.out',
+                opacity: 0, y: 60, duration: 0.8, stagger: 0.12, ease: 'power2.out',
             });
         }, sectionRef);
         return () => ctx.revert();
@@ -23,55 +23,60 @@ const FeaturedProducts = () => {
 
     const scroll = (direction) => {
         if (scrollContainerRef.current) {
-            const { current } = scrollContainerRef;
-            const scrollAmount = 300; // Updated scroll amount
-            if (direction === 'left') {
-                current.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-            } else {
-                current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-            }
+            scrollContainerRef.current.scrollBy({
+                left: direction === 'left' ? -320 : 320, behavior: 'smooth'
+            });
         }
     };
 
     return (
-        <section ref={sectionRef} style={{ padding: '60px 0', backgroundColor: '#fff' }} id="products">
+        <section ref={sectionRef} style={{
+            padding: '72px 0 80px', backgroundColor: '#fff',
+            borderTop: '1px solid #f1f5f9',
+        }} id="products">
             <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px' }}>
-                {/* Section Header */}
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '40px' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-                        <div style={{ width: '16px', height: '40px', backgroundColor: '#2563eb', borderRadius: '4px' }}></div>
-                        <h2 style={{ fontSize: '28px', fontWeight: 700 }}>Flash Sales</h2>
+                {/* Section Label */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
+                    <div className="section-accent-bar" style={{ height: '26px' }} />
+                    <span style={{
+                        color: '#2563eb', fontSize: '13.5px', fontWeight: 700, letterSpacing: '0.5px',
+                        textTransform: 'uppercase',
+                    }}>Today's</span>
+                </div>
+
+                {/* Heading + Arrows */}
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '40px', flexWrap: 'wrap', gap: '16px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                        <Zap style={{ width: '22px', height: '22px', color: '#fbbf24', fill: '#fbbf24' }} />
+                        <h2 style={{
+                            fontSize: '30px', fontWeight: 900, color: '#0f172a', letterSpacing: '-0.5px'
+                        }}>Flash Sales</h2>
                     </div>
-                    <div style={{ display: 'flex', gap: '8px' }}>
-                        <button className="arrow-btn" onClick={() => scroll('left')} style={{
-                            width: '46px', height: '46px', borderRadius: '50%', backgroundColor: '#f3f4f6',
-                            display: 'flex', alignItems: 'center', justifyContent: 'center',
-                            border: 'none', cursor: 'pointer', transition: 'all 0.2s'
-                        }}>
-                            <ChevronLeft style={{ width: '22px', height: '22px' }} />
-                        </button>
-                        <button className="arrow-btn" onClick={() => scroll('right')} style={{
-                            width: '46px', height: '46px', borderRadius: '50%', backgroundColor: '#f3f4f6',
-                            display: 'flex', alignItems: 'center', justifyContent: 'center',
-                            border: 'none', cursor: 'pointer', transition: 'all 0.2s'
-                        }}>
-                            <ChevronRight style={{ width: '22px', height: '22px' }} />
-                        </button>
+                    <div style={{ display: 'flex', gap: '10px' }}>
+                        {['left', 'right'].map(dir => (
+                            <button key={dir} className="arrow-btn" onClick={() => scroll(dir)} style={{
+                                width: '44px', height: '44px', borderRadius: '50%',
+                                backgroundColor: '#f1f5f9', border: '1.5px solid #e2e8f0',
+                                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                cursor: 'pointer', color: '#475569',
+                            }}>
+                                {dir === 'left'
+                                    ? <ChevronLeft style={{ width: '20px', height: '20px' }} />
+                                    : <ChevronRight style={{ width: '20px', height: '20px' }} />
+                                }
+                            </button>
+                        ))}
                     </div>
                 </div>
 
-                {/* Carousel Container */}
+                {/* Carousel */}
                 <div
                     ref={scrollContainerRef}
                     className="products-carousel"
                     style={{
-                        display: 'flex',
-                        gap: '24px',
-                        overflowX: 'hidden',
-                        paddingBottom: '24px',
-                        scrollBehavior: 'smooth',
-                        scrollbarWidth: 'none', // Firefox
-                        msOverflowStyle: 'none' // IE/Edge
+                        display: 'flex', gap: '20px',
+                        overflowX: 'hidden', paddingBottom: '8px',
+                        scrollBehavior: 'smooth', scrollbarWidth: 'none', msOverflowStyle: 'none',
                     }}
                 >
                     {featuredProducts.map((product) => (
@@ -81,15 +86,17 @@ const FeaturedProducts = () => {
                     ))}
                 </div>
 
-                {/* Spacer */}
-                <div style={{ height: '40px', width: '100%' }}></div>
+                {/* Divider */}
+                <div style={{ height: '1px', background: 'linear-gradient(90deg, transparent, #e2e8f0, transparent)', margin: '40px 0 32px' }} />
 
-                {/* View All Products */}
-                <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px', paddingBottom: '16px', position: 'relative', zIndex: 1 }}>
+                {/* View All */}
+                <div style={{ display: 'flex', justifyContent: 'center' }}>
                     <button className="btn-primary" style={{
-                        backgroundColor: '#2563eb', color: '#fff', fontSize: '14px',
-                        fontWeight: 600, padding: '16px 48px', borderRadius: '8px',
-                        border: 'none', cursor: 'pointer'
+                        background: 'linear-gradient(135deg, #2563eb, #1d4ed8)',
+                        color: '#fff', fontSize: '14.5px',
+                        fontWeight: 700, padding: '14px 52px', borderRadius: '12px',
+                        border: 'none', cursor: 'pointer',
+                        boxShadow: '0 4px 16px rgba(37,99,235,0.3)',
                     }}>
                         View All Products
                     </button>
@@ -97,9 +104,7 @@ const FeaturedProducts = () => {
             </div>
 
             <style>{`
-                .products-carousel::-webkit-scrollbar {
-                    display: none;
-                }
+                .products-carousel::-webkit-scrollbar { display: none; }
             `}</style>
         </section>
     );
