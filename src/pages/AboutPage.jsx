@@ -5,16 +5,6 @@ import {
     globalPresence, featuredIndustries,
 } from '../data/siteContent';
 
-const SectionLabel = ({ sub, title }) => (
-    <div style={{ marginBottom: '40px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '12px' }}>
-            <div style={{ width: '4px', height: '28px', borderRadius: '2px', background: 'linear-gradient(180deg, #0d9488, #99f6e4)' }} />
-            <span style={{ color: '#0d9488', fontSize: '12px', fontWeight: 800, letterSpacing: '2px', textTransform: 'uppercase' }}>{sub}</span>
-        </div>
-        <h2 style={{ fontSize: '36px', fontWeight: 900, color: '#0f172a', letterSpacing: '-0.8px', lineHeight: 1.12 }}>{title}</h2>
-    </div>
-);
-
 const AboutPage = () => (
     <>
         {/* Hero Banner */}
@@ -64,7 +54,7 @@ const AboutPage = () => (
             <div style={{ maxWidth: '1240px', margin: '0 auto' }}>
                 <div className="overview-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '64px', alignItems: 'start' }}>
                     <div>
-                        <SectionLabel sub="Who We Are" title="Company Overview" />
+                        <h2 style={{ fontSize: '36px', fontWeight: 900, color: '#0f172a', letterSpacing: '-0.8px', lineHeight: 1.12, marginBottom: '24px' }}>Company Overview</h2>
                         <p style={{ color: '#475569', fontSize: '16px', lineHeight: 1.9, marginBottom: '20px' }}>
                             Kenjal Industries Pvt. Ltd. is a well-recognised manufacturer and exporter of high-end industrial filling, packaging, and beverage processing machines. Established in <strong style={{ color: '#0f172a' }}>2020 in New Delhi, India</strong>, the company specialises in delivering customised solutions for industrial operations where reliability, precision, and performance are critical.
                         </p>
@@ -148,7 +138,7 @@ const AboutPage = () => (
             <div style={{ maxWidth: '1240px', margin: '0 auto' }}>
                 <div className="spectrum-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '64px', alignItems: 'start' }}>
                     <div>
-                        <SectionLabel sub="Capabilities" title="Full Spectrum Know-How" />
+                        <h2 style={{ fontSize: '36px', fontWeight: 900, color: '#0f172a', letterSpacing: '-0.8px', lineHeight: 1.12, marginBottom: '24px' }}>Full Spectrum Know-How</h2>
                         <p style={{ color: '#475569', fontSize: '16px', lineHeight: 1.9, marginBottom: '24px' }}>
                             Kenjal Industries provides complete solutions for beverage processing including juice blending, carbonated beverage preparation, syrup preparation, filtration, homogenization, pasteurization, bottling, and packaging.
                         </p>

@@ -40,12 +40,12 @@ const Header = () => {
                     <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '12px', textDecoration: 'none', flexShrink: 0 }}>
                         <div style={{
                             width: '40px', height: '40px', borderRadius: '12px',
-                            background: 'linear-gradient(135deg, #0f766e, #0d9488)',
+                            background: 'rgba(255,255,255,0.05)',
                             display: 'flex', alignItems: 'center', justifyContent: 'center',
-                            boxShadow: '0 4px 16px rgba(15,118,110,0.35)', overflow: 'hidden', flexShrink: 0,
+                            border: '1px solid rgba(255,255,255,0.1)', overflow: 'hidden', flexShrink: 0,
                         }}>
                             <img
-                                src="/images/logo.png" alt="Kenjal"
+                                src="/kenjal_icon.png" alt="Kenjal"
                                 style={{ width: '100%', height: '100%', objectFit: 'contain' }}
                                 onError={e => {
                                     e.target.style.display = 'none';

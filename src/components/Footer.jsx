@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { MapPin, Phone, Mail, Globe, ArrowUpRight } from 'lucide-react';
+import { MapPin, Phone, Mail, Globe, ArrowUpRight, Youtube } from 'lucide-react';
 
 const Footer = () => {
     const year = new Date().getFullYear();
@@ -39,11 +39,18 @@ const Footer = () => {
                         <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px' }}>
                             <div style={{
                                 width: '42px', height: '42px', borderRadius: '12px',
-                                background: 'linear-gradient(135deg, #0f766e, #0d9488)',
+                                background: 'rgba(255,255,255,0.05)',
                                 display: 'flex', alignItems: 'center', justifyContent: 'center',
-                                boxShadow: '0 4px 16px rgba(15,118,110,0.32)',
+                                border: '1px solid rgba(255,255,255,0.1)', overflow: 'hidden',
                             }}>
-                                <span style={{ color: '#fff', fontWeight: 900, fontSize: '22px', lineHeight: 1 }}>K</span>
+                                <img
+                                    src="/kenjal_icon.png" alt="Kenjal"
+                                    style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+                                    onError={e => {
+                                        e.target.style.display = 'none';
+                                        e.target.parentElement.innerHTML += '<span style="color:#fff;font-weight:900;font-size:22px;line-height:1">K</span>';
+                                    }}
+                                />
                             </div>
                             <div>
                                 <div style={{ color: '#fff', fontWeight: 800, fontSize: '17px', lineHeight: 1.2 }}>Kenjal Industries</div>
@@ -115,6 +122,13 @@ const Footer = () => {
                                     </a>
                                 </div>
                             </div>
+                            <a href="https://www.youtube.com/channel/UCLNVN1oW6wdupDaHM-xOmNQ" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', gap: '10px', color: '#94a3b8', textDecoration: 'none' }}
+                                onMouseEnter={e => e.currentTarget.style.color = '#99f6e4'}
+                                onMouseLeave={e => e.currentTarget.style.color = '#94a3b8'}
+                            >
+                                <Youtube style={{ width: '14px', height: '14px', color: '#0d9488', flexShrink: 0, marginTop: '2px' }} />
+                                <span style={{ fontSize: '14px', lineHeight: 1.6 }}>YouTube Channel</span>
+                            </a>
                         </div>
                     </div>
 

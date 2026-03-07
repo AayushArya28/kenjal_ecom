@@ -36,15 +36,11 @@ const FeaturesSection = () => {
     return (
         <section style={{ padding: '84px 0 78px', backgroundColor: '#f8fafc', borderTop: '1px solid #e2e8f0' }}>
             <div style={{ maxWidth: '1240px', margin: '0 auto', padding: '0 24px' }}>
-                <div style={{ marginBottom: '28px' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
-                        <div className="section-accent-bar" style={{ height: '26px' }} />
-                        <span style={{ color: '#0f766e', fontSize: '13.5px', fontWeight: 700, letterSpacing: '0.5px', textTransform: 'uppercase' }}>Why Kenjal</span>
-                    </div>
+                <div style={{ marginBottom: '28px', textAlign: 'center', maxWidth: '840px', margin: '0 auto 40px' }}>
                     <h2 style={{ fontSize: '32px', fontWeight: 900, color: '#0f172a', letterSpacing: '-0.6px', marginBottom: '10px' }}>
                         Engineering support built around performance and dependability
                     </h2>
-                    <p style={{ color: '#64748b', fontSize: '15px', lineHeight: 1.8, maxWidth: '840px' }}>
+                    <p style={{ color: '#64748b', fontSize: '15px', lineHeight: 1.8 }}>
                         {manufacturingStrengths.join(', ')}.
                     </p>
                 </div>

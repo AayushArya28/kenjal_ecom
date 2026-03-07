@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ArrowUpRight, BriefcaseBusiness } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { featuredIndustries, industriesServed } from '../data/siteContent';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -56,17 +56,12 @@ const NewArrivals = () => {
     return (
         <section ref={sectionRef} style={{ padding: '76px 0', backgroundColor: '#fff', borderTop: '1px solid #e2e8f0' }} id="industries">
             <div style={{ maxWidth: '1240px', margin: '0 auto', padding: '0 24px' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
-                    <div className="section-accent-bar" style={{ height: '26px' }} />
-                    <span style={{ color: '#0f766e', fontSize: '13.5px', fontWeight: 700, letterSpacing: '0.5px', textTransform: 'uppercase' }}>Industries We Serve</span>
+                <div style={{ textAlign: 'center', maxWidth: '840px', margin: '0 auto 40px' }}>
+                    <h2 style={{ fontSize: '32px', fontWeight: 900, color: '#0f172a', letterSpacing: '-0.5px', marginBottom: '12px' }}>Built for diverse production environments</h2>
+                    <p style={{ color: '#64748b', fontSize: '15px', lineHeight: 1.8 }}>
+                        Kenjal machinery is deployed across packaging, bottling, processing, and utility workflows for food, beverage, pharma, FMCG, cosmetic, and industrial operations.
+                    </p>
                 </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px' }}>
-                    <BriefcaseBusiness style={{ width: '22px', height: '22px', color: '#c08428' }} />
-                    <h2 style={{ fontSize: '32px', fontWeight: 900, color: '#0f172a', letterSpacing: '-0.5px' }}>Built for diverse production environments</h2>
-                </div>
-                <p style={{ maxWidth: '840px', color: '#64748b', fontSize: '15px', lineHeight: 1.8, marginBottom: '30px' }}>
-                    Kenjal machinery is deployed across packaging, bottling, processing, and utility workflows for food, beverage, pharma, FMCG, cosmetic, and industrial operations.
-                </p>
 
                 <div className="arrivals-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '20px', marginBottom: '28px' }}>
                     {featuredIndustries.map((item, index) => (

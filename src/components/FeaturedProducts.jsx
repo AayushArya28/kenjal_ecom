@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ChevronLeft, ChevronRight, Factory } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import ProductCard from './ProductCard';
 import { featuredProducts } from '../data/products';
@@ -38,19 +38,9 @@ const FeaturedProducts = () => {
     return (
         <section ref={sectionRef} style={{ padding: '60px 0 64px', backgroundColor: '#fff', borderTop: '1px solid #e2e8f0' }} id="products">
             <div style={{ maxWidth: '1240px', margin: '0 auto', padding: '0 24px' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
-                    <div className="section-accent-bar" style={{ height: '26px' }} />
-                    <span style={{ color: '#0f766e', fontSize: '13.5px', fontWeight: 700, letterSpacing: '0.5px', textTransform: 'uppercase' }}>
-                        Featured Range
-                    </span>
-                </div>
-
                 <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginBottom: '26px', flexWrap: 'wrap', gap: '14px' }}>
                     <div style={{ display: 'grid', gap: '10px' }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                            <Factory style={{ width: '22px', height: '22px', color: '#c08428' }} />
-                            <h2 style={{ fontSize: '30px', fontWeight: 900, color: '#0f172a', letterSpacing: '-0.5px' }}>Core Machinery</h2>
-                        </div>
+                        <h2 style={{ fontSize: '30px', fontWeight: 900, color: '#0f172a', letterSpacing: '-0.5px' }}>Core Machinery</h2>
                         <p style={{ maxWidth: '700px', color: '#64748b', fontSize: '15px', lineHeight: 1.7 }}>
                             A curated selection of Kenjal systems for beverage processing, water treatment, bottling, and packaging automation.
                         </p>
