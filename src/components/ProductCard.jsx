@@ -1,19 +1,8 @@
-import { Star, Heart, Eye, ShoppingCart } from 'lucide-react';
+import { Heart, Eye, ShoppingCart } from 'lucide-react';
 import { useState } from 'react';
 
 const ProductCard = ({ product }) => {
     const [liked, setLiked] = useState(false);
-
-    const renderStars = (rating) => {
-        return [...Array(5)].map((_, i) => (
-            <Star key={i} style={{
-                width: '13px', height: '13px',
-                fill: i < Math.floor(rating) ? '#fbbf24' : '#e2e8f0',
-                color: i < Math.floor(rating) ? '#fbbf24' : '#e2e8f0',
-                flexShrink: 0,
-            }} />
-        ));
-    };
 
     return (
         <div className="product-card" style={{ position: 'relative', cursor: 'pointer', background: '#fff' }}>
@@ -34,18 +23,7 @@ const ProductCard = ({ product }) => {
                     }}
                 />
 
-                {/* Discount badge */}
-                {product.discount && (
-                    <span style={{
-                        position: 'absolute', top: '10px', left: '10px', zIndex: 2,
-                        background: 'linear-gradient(135deg, #2563eb, #1d4ed8)',
-                        color: '#fff', fontSize: '10px', fontWeight: 800, padding: '4px 10px',
-                        borderRadius: '99px', letterSpacing: '0.2px',
-                        boxShadow: '0 2px 8px rgba(37,99,235,0.35)',
-                    }}>
-                        -{product.discount}%
-                    </span>
-                )}
+
 
                 {/* Action icons */}
                 <div style={{
@@ -94,25 +72,11 @@ const ProductCard = ({ product }) => {
             {/* Info */}
             <div style={{ padding: '14px 14px 12px' }}>
                 <p style={{
-                    fontSize: '13.5px', color: '#0f172a', fontWeight: 600, marginBottom: '8px',
+                    fontSize: '13.5px', color: '#0f172a', fontWeight: 600,
                     overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', lineHeight: 1.4,
                 }}>
                     {product.name}
                 </p>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-                    <span style={{
-                        background: 'linear-gradient(135deg, #2563eb, #1d4ed8)',
-                        WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
-                        fontSize: '16px', fontWeight: 800,
-                    }}>₹{product.price}</span>
-                    {product.originalPrice && (
-                        <span style={{ color: '#94a3b8', fontSize: '12px', textDecoration: 'line-through', fontWeight: 400 }}>₹{product.originalPrice}</span>
-                    )}
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-                    <div style={{ display: 'flex', gap: '1px' }}>{renderStars(product.rating)}</div>
-                    <span style={{ color: '#94a3b8', fontSize: '11px', fontWeight: 500 }}>({product.reviews})</span>
-                </div>
             </div>
         </div>
     );

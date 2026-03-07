@@ -32,43 +32,6 @@ const Header = () => {
 
     return (
         <>
-            {/* Top Announcement Banner */}
-            <div style={{
-                background: 'linear-gradient(90deg, #0f172a 0%, #1e3a8a 50%, #0f172a 100%)',
-                color: '#fff', padding: '9px 0', overflow: 'hidden'
-            }}>
-                <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px' }}>
-                    <div className="top-banner-content" style={{
-                        display: 'flex', alignItems: 'center', justifyContent: 'center',
-                        gap: '20px', fontSize: '13px', letterSpacing: '0.1px'
-                    }}>
-                        <span style={{ color: '#bfdbfe' }}>
-                            🎉 Summer Sale — Free Express Delivery on all orders &nbsp;
-                            <span style={{
-                                background: 'linear-gradient(90deg, #fbbf24, #f97316)',
-                                WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
-                                fontWeight: 700
-                            }}>
-                                OFF 50%
-                            </span>
-                        </span>
-                        <Link to="/products" style={{
-                            fontSize: '12px', fontWeight: 700, color: '#fff',
-                            background: 'rgba(255,255,255,0.15)', border: '1px solid rgba(255,255,255,0.25)',
-                            padding: '4px 14px', borderRadius: '99px', textDecoration: 'none',
-                            transition: 'background 0.2s',
-                            backdropFilter: 'blur(4px)',
-                            whiteSpace: 'nowrap',
-                        }}
-                            onMouseEnter={e => e.currentTarget.style.background = 'rgba(255,255,255,0.25)'}
-                            onMouseLeave={e => e.currentTarget.style.background = 'rgba(255,255,255,0.15)'}
-                        >
-                            Shop Now →
-                        </Link>
-                    </div>
-                </div>
-            </div>
-
             {/* Main Header */}
             <header style={{
                 backgroundColor: scrolled ? 'rgba(255,255,255,0.88)' : '#fff',

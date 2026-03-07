@@ -31,10 +31,10 @@ const FeaturedProducts = () => {
 
     return (
         <section ref={sectionRef} style={{
-            padding: '72px 0 80px', backgroundColor: '#fff',
+            padding: '32px 0 36px', backgroundColor: '#fff',
             borderTop: '1px solid #f1f5f9',
         }} id="products">
-            <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px' }}>
+            <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 16px' }}>
                 {/* Section Label */}
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
                     <div className="section-accent-bar" style={{ height: '26px' }} />
@@ -45,7 +45,7 @@ const FeaturedProducts = () => {
                 </div>
 
                 {/* Heading + Arrows */}
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '40px', flexWrap: 'wrap', gap: '16px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '20px', flexWrap: 'wrap', gap: '12px' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                         <Zap style={{ width: '22px', height: '22px', color: '#fbbf24', fill: '#fbbf24' }} />
                         <h2 style={{
@@ -74,20 +74,21 @@ const FeaturedProducts = () => {
                     ref={scrollContainerRef}
                     className="products-carousel"
                     style={{
-                        display: 'flex', gap: '20px',
-                        overflowX: 'hidden', paddingBottom: '8px',
+                        display: 'flex', gap: '14px',
+                        overflowX: 'auto', paddingBottom: '8px',
                         scrollBehavior: 'smooth', scrollbarWidth: 'none', msOverflowStyle: 'none',
+                        WebkitOverflowScrolling: 'touch',
                     }}
                 >
                     {featuredProducts.map((product) => (
-                        <div key={product.id} style={{ minWidth: '240px', flex: '0 0 auto' }}>
+                        <div key={product.id} style={{ minWidth: '200px', flex: '0 0 auto' }}>
                             <ProductCard product={product} />
                         </div>
                     ))}
                 </div>
 
                 {/* Divider */}
-                <div style={{ height: '1px', background: 'linear-gradient(90deg, transparent, #e2e8f0, transparent)', margin: '40px 0 32px' }} />
+                <div style={{ height: '1px', background: 'linear-gradient(90deg, transparent, #e2e8f0, transparent)', margin: '24px 0 20px' }} />
 
                 {/* View All */}
                 <div style={{ display: 'flex', justifyContent: 'center' }}>
