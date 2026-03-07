@@ -36,9 +36,9 @@ const ScrollToTop = () => {
     return (
         <button onClick={scrollToTop} style={{
             position: 'fixed', bottom: '32px', right: '32px', width: '48px', height: '48px',
-            backgroundColor: '#2563eb', color: '#fff', borderRadius: '50%',
+            backgroundColor: '#0d9488', color: '#fff', borderRadius: '50%',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
-            boxShadow: '0 4px 12px rgba(37,99,235,0.4)', border: 'none', cursor: 'pointer',
+            boxShadow: '0 4px 12px rgba(13,148,136,0.4)', border: 'none', cursor: 'pointer',
             zIndex: 50, transition: 'all 0.2s'
         }}>
             <ArrowUp style={{ width: '24px', height: '24px' }} />

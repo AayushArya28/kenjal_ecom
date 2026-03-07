@@ -1,424 +1,201 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
 
 @theme {
-    --color-primary: #2563eb;
-    --color-primary-dark: #1d4ed8;
-    --color-primary-light: #3b82f6;
-    --color-accent-red: #ef4444;
-    --color-accent-red-dark: #dc2626;
+    --color-primary: #0d9488;
+    --color-primary-dark: #0f766e;
+    --color-primary-light: #2dd4bf;
+    --color-ink: #0f172a;
+    --color-ink-light: #334155;
+    --color-ink-muted: #64748b;
+    --color-surface: #ffffff;
+    --color-surface-2: #f8fafc;
+    --color-teal: #99f6e4;
+    --color-gold: #fbbf24;
 }
 
 :root {
-    --brand: #2563eb;
-    --brand-dark: #1d4ed8;
-    --brand-glow: rgba(37, 99, 235, 0.28);
+    --brand: #0d9488;
+    --brand-dark: #0f766e;
+    --brand-light: #2dd4bf;
+    --brand-teal: #99f6e4;
     --ink: #0f172a;
-    --ink-light: #475569;
-    --ink-muted: #94a3b8;
+    --ink-light: #334155;
+    --ink-muted: #64748b;
     --surface: #ffffff;
     --surface-2: #f8fafc;
     --border: #e2e8f0;
+    --gold: #fbbf24;
     --radius-sm: 8px;
     --radius-md: 14px;
-    --radius-lg: 20px;
-    --shadow-card: 0 2px 8px rgba(15, 23, 42, 0.06), 0 8px 24px rgba(15, 23, 42, 0.04);
-    --shadow-card-hover: 0 4px 16px rgba(15, 23, 42, 0.1), 0 20px 48px rgba(15, 23, 42, 0.08);
-    --shadow-brand: 0 6px 24px rgba(37, 99, 235, 0.35);
+    --radius-lg: 22px;
+    --radius-xl: 28px;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+    --shadow-card: 0 2px 12px rgba(0,0,0,0.07);
+    --shadow-card-hover: 0 10px 36px rgba(0,0,0,0.1);
+    --shadow-brand: 0 6px 24px rgba(13,148,136,0.28);
 }
 
-* {
+*, *::before, *::after {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Inter', 'Poppins', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    overflow-x: hidden;
-    background-color: var(--surface);
-    color: var(--ink);
 }
 
 html {
     scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
 }
 
-::-webkit-scrollbar {
-    width: 6px;
+body {
+    font-family: 'Inter', 'Poppins', system-ui, sans-serif;
+    background-color: #fff;
+    color: var(--ink);
+    line-height: 1.6;
 }
 
-::-webkit-scrollbar-track {
-    background: var(--surface-2);
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', 'Inter', system-ui, sans-serif;
 }
 
-::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, var(--brand), var(--brand-dark));
-    border-radius: 99px;
+/* ─── Section label accent bar ─── */
+.section-accent-bar {
+    width: 4px;
+    border-radius: 2px;
+    background: linear-gradient(180deg, #0d9488, #99f6e4);
+    flex-shrink: 0;
 }
 
-::-webkit-scrollbar-thumb:hover {
-    background: var(--brand-dark);
-}
-
-/* ===================== PRODUCT CARD ===================== */
+/* ─── Product card ─── */
 .product-card {
-    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease;
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-lg);
     overflow: hidden;
-    background: var(--surface);
     border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
 .product-card:hover {
     transform: translateY(-6px);
     box-shadow: var(--shadow-card-hover);
-    border-color: transparent;
-}
-
-.product-card img {
-    transition: transform 0.5s cubic-bezier(0.34, 1.2, 0.64, 1);
-}
-
-.product-card:hover img {
-    transform: scale(1.1);
-}
-
-/* Add-to-cart bar on hover */
-.product-card .add-to-cart-bar {
-    transform: translateY(100%);
-    transition: transform 0.32s cubic-bezier(0.34, 1.2, 0.64, 1);
+    border-color: #ccfbf1;
 }
 
 .product-card:hover .add-to-cart-bar {
     transform: translateY(0);
 }
 
-/* ===================== CATEGORY BOXES ===================== */
-.category-box {
-    transition: all 0.3s cubic-bezier(0.34, 1.2, 0.64, 1);
-    position: relative;
-    overflow: hidden;
+.add-to-cart-bar {
+    transform: translateY(100%);
+    transition: transform 0.28s cubic-bezier(0.34,1.56,0.64,1);
 }
 
-.category-box::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, var(--brand), #1e40af);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    z-index: 0;
-}
-
-.category-box > * {
-    position: relative;
-    z-index: 1;
-}
-
-.category-box:hover {
-    transform: translateY(-8px);
-    border-color: transparent !important;
-    box-shadow: 0 12px 32px var(--brand-glow);
-}
-
-.category-box:hover::before {
-    opacity: 1;
-}
-
-/* ===================== ARRIVAL CARDS ===================== */
+/* ─── Arrival card (industry/feature cards) ─── */
 .arrival-card {
-    transition: transform 0.4s cubic-bezier(0.34, 1.2, 0.64, 1), box-shadow 0.4s ease;
+    transition: transform 0.26s ease, box-shadow 0.26s ease;
 }
 
 .arrival-card:hover {
-    transform: scale(1.02);
-    box-shadow: 0 20px 56px rgba(0, 0, 0, 0.36);
+    transform: translateY(-5px) scale(1.01);
+    box-shadow: 0 20px 48px rgba(0,0,0,0.16);
 }
 
-.arrival-card:hover img {
-    opacity: 0.75 !important;
-    transform: scale(1.06) !important;
-    transition: opacity 0.45s ease, transform 0.65s ease !important;
+/* ─── Primary button ─── */
+.btn-primary {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* ===================== FEATURE ICONS ===================== */
+.btn-primary:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 10px 32px rgba(13,148,136,0.35);
+}
+
+/* ─── Arrow navigation button ─── */
+.arrow-btn {
+    transition: all 0.2s ease;
+}
+
+.arrow-btn:hover {
+    background: linear-gradient(135deg, #0d9488, #0f766e) !important;
+    color: #fff !important;
+    border-color: transparent !important;
+    transform: scale(1.1);
+}
+
+/* ─── Feature item ─── */
 .feature-item {
-    transition: transform 0.3s ease;
+    transition: transform 0.24s ease, box-shadow 0.24s ease;
 }
 
 .feature-item:hover {
     transform: translateY(-6px);
+    box-shadow: var(--shadow-card-hover);
 }
 
-.feature-icon-ring {
-    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
-}
-
-.feature-item:hover .feature-icon-ring {
-    transform: scale(1.12) rotate(-5deg);
-    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.18);
-}
-
-.feature-icon-inner {
-    transition: background 0.3s ease;
-}
-
-.feature-item:hover .feature-icon-inner {
-    background: linear-gradient(135deg, var(--brand), #1e40af) !important;
-}
-
-/* ===================== BUTTONS ===================== */
-.btn-primary {
-    transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.22s ease, background 0.22s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.btn-primary::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent);
-    opacity: 0;
-    transition: opacity 0.2s;
-}
-
-.btn-primary:hover::after {
-    opacity: 1;
-}
-
-.btn-primary:hover {
-    transform: translateY(-2px) scale(1.03);
-    box-shadow: var(--shadow-brand);
-}
-
-.btn-primary:active {
-    transform: translateY(0) scale(0.97);
-}
-
-.btn-red {
-    transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.22s ease;
-}
-
-.btn-red:hover {
-    transform: translateY(-2px) scale(1.03);
-    box-shadow: 0 6px 24px rgba(239, 68, 68, 0.42);
-    background-color: #dc2626 !important;
-}
-
-.btn-red:active {
-    transform: translateY(0) scale(0.97);
-}
-
-.btn-green {
-    transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.22s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.btn-green::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent);
-    opacity: 0;
-    transition: opacity 0.2s;
-}
-
-.btn-green:hover::after {
-    opacity: 1;
-}
-
-.btn-green:hover {
-    transform: translateY(-2px) scale(1.03);
-    box-shadow: 0 6px 24px rgba(34, 197, 94, 0.42);
-    background-color: #16a34a !important;
-}
-
-/* ===================== NAV LINKS ===================== */
+/* ─── Nav links ─── */
 .nav-link {
     position: relative;
     transition: color 0.2s ease;
 }
 
-.nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 50%;
-    width: 0;
-    height: 2px;
-    background: linear-gradient(90deg, var(--brand), #60a5fa);
-    transition: width 0.3s ease, left 0.3s ease;
-    border-radius: 99px;
-}
-
-.nav-link:hover::after {
-    width: 100%;
-    left: 0;
-}
-
-.nav-link:hover {
-    color: var(--brand) !important;
-}
-
-/* ===================== ARROW BUTTONS ===================== */
-.arrow-btn {
-    transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.arrow-btn:hover {
-    background: linear-gradient(135deg, var(--brand), var(--brand-dark)) !important;
-    color: #fff !important;
-    transform: scale(1.12);
-    box-shadow: var(--shadow-brand);
-}
-
-/* ===================== FOOTER LINKS ===================== */
+/* ─── Footer links ─── */
 .footer-link {
     transition: color 0.2s ease, letter-spacing 0.2s ease;
 }
 
 .footer-link:hover {
-    color: #fff !important;
-    letter-spacing: 0.3px;
+    color: var(--brand-teal);
+    letter-spacing: 0.2px;
 }
 
-/* ===================== ICON HOVER ===================== */
-.icon-hover {
-    transition: color 0.2s ease, transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
 }
 
-.icon-hover:hover {
-    color: var(--brand) !important;
-    transform: scale(1.2);
+::-webkit-scrollbar-track {
+    background: #f1f5f9;
 }
 
-/* ===================== SECTION LABEL ===================== */
-.section-accent-bar {
-    width: 5px;
-    border-radius: 99px;
-    background: linear-gradient(180deg, var(--brand), #60a5fa);
-    flex-shrink: 0;
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #0d9488, #0f766e);
+    border-radius: 3px;
 }
 
-/* ===================== ANIMATIONS ===================== */
+/* ─── Products carousel: hide scrollbar ─── */
+.products-carousel::-webkit-scrollbar {
+    display: none;
+}
+
+/* ─── Animate float (hero) ─── */
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-12px); }
+}
+
+.animate-float {
+    animation: float 4s ease-in-out infinite;
+}
+
+/* ─── Fade in up ─── */
 @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(24px); }
     to   { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes pulse-soft {
-    0%, 100% { transform: scale(1); }
-    50%       { transform: scale(1.05); }
+.animate-in {
+    animation: fadeInUp 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
-@keyframes shimmer {
-    0%   { background-position: -200% center; }
-    100% { background-position:  200% center; }
-}
-
-@keyframes float {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    33%       { transform: translateY(-12px) rotate(1deg); }
-    66%       { transform: translateY(-6px) rotate(-1deg); }
-}
-
-.animate-fade-in-up {
-    animation: fadeInUp 0.6s ease forwards;
-}
-
-.animate-float {
-    animation: float 6s ease-in-out infinite;
-}
-
-/* ===================== GLASS EFFECT ===================== */
-.glass {
-    backdrop-filter: blur(12px) saturate(180%);
-    -webkit-backdrop-filter: blur(12px) saturate(180%);
-    background: rgba(255, 255, 255, 0.72);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-}
-
-/* ===================== GRADIENT TEXT ===================== */
-.gradient-text {
-    background: linear-gradient(135deg, var(--brand), #60a5fa);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-/* ===================== SUBTLE DOTS PATTERN ===================== */
-.dot-pattern {
-    background-image: radial-gradient(circle, #cbd5e1 1px, transparent 1px);
-    background-size: 24px 24px;
-}
-
-/* ===================== GLOBAL RESPONSIVE ===================== */
-
-/* --- Tablet (≤1024px) --- */
+/* ─── Responsive utility: products grid ─── */
 @media (max-width: 1024px) {
-    .category-grid       { grid-template-columns: repeat(3, 1fr) !important; }
-    .bestselling-grid    { grid-template-columns: repeat(3, 1fr) !important; }
-    .footer-grid         { grid-template-columns: repeat(2, 1fr) !important; gap: 32px !important; }
-    .features-grid       { grid-template-columns: repeat(2, 1fr) !important; }
-    .about-grid          { grid-template-columns: 1fr !important; }
+    .page-products-grid { grid-template-columns: repeat(3, 1fr) !important; }
+    .products-hero-grid { grid-template-columns: 1fr !important; }
 }
-
-/* --- Mobile (≤768px) --- */
 @media (max-width: 768px) {
-    /* Navigation */
-    .header-desktop-nav  { display: none !important; }
-    .header-mobile-toggle { display: block !important; }
-    .header-mobile-nav   { display: block !important; }
-
-    /* Sections */
-    .bestselling-grid    { grid-template-columns: repeat(2, 1fr) !important; gap: 14px !important; }
-    .arrivals-grid       { grid-template-columns: 1fr !important; height: auto !important; }
-    .arrivals-grid > div:first-child { min-height: 280px !important; }
-    .about-grid          { grid-template-columns: 1fr !important; }
-
-    /* Promo banner */
-    .promo-inner         { flex-direction: column !important; padding: 32px 24px !important; text-align: center; }
-    .promo-inner h2      { font-size: 28px !important; }
-
-    /* Footer */
-    .footer-grid         { grid-template-columns: 1fr !important; gap: 28px !important; }
-    .footer-bottom       { justify-content: center !important; text-align: center; flex-direction: column !important; }
-
-    /* Page grids */
-    .page-products-grid  { grid-template-columns: repeat(2, 1fr) !important; gap: 14px !important; }
-
-    /* Section headings */
-    section h2           { font-size: 22px !important; }
-
-    /* Reduce section padding */
-    section              { padding-top: 48px !important; padding-bottom: 48px !important; }
+    .page-products-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 16px !important; }
 }
-
-/* --- Small mobile (≤480px) --- */
 @media (max-width: 480px) {
-    /* Category */
-    .category-grid       { grid-template-columns: repeat(2, 1fr) !important; gap: 12px !important; }
-
-    /* Products */
-    .bestselling-grid    { grid-template-columns: 1fr !important; gap: 12px !important; }
-    .page-products-grid  { grid-template-columns: 1fr !important; }
-
-    /* Features */
-    .features-grid       { grid-template-columns: 1fr !important; }
-
-    /* Footer */
-    .footer-bottom       { gap: 8px !important; }
-
-    /* Type toggle on products page */
-    .product-tabs        { gap: 6px !important; }
-    .product-tabs button { padding: 7px 14px !important; font-size: 12px !important; }
-
-    /* Top announcement bar */
-    .top-banner-content  { flex-direction: column !important; gap: 6px !important; font-size: 11px !important; }
+    .page-products-grid { grid-template-columns: 1fr !important; }
 }

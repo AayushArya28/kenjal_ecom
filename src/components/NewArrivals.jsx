@@ -1,59 +1,37 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Sparkles, ArrowRight } from 'lucide-react';
-import { newArrivals } from '../data/products';
+import { ArrowUpRight, BriefcaseBusiness } from 'lucide-react';
+import { featuredIndustries, industriesServed } from '../data/siteContent';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const ArrivalCard = ({ item, style, titleSize = '14px', featured = false }) => (
+const IndustryCard = ({ item, index }) => (
     <div className="arrival-card" style={{
-        position: 'relative', backgroundColor: '#0f172a', borderRadius: featured ? '20px' : '16px',
-        overflow: 'hidden', cursor: 'pointer', ...style
+        position: 'relative',
+        background: 'linear-gradient(135deg, #0f172a, #1f2937 62%, #0f766e)',
+        borderRadius: '24px',
+        overflow: 'hidden',
+        padding: '24px',
+        minHeight: '240px',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        color: '#fff',
     }}>
-        <img src={item.image} alt={item.name}
-            style={{
-                position: 'absolute', inset: 0, width: '100%', height: '100%',
-                objectFit: 'cover', opacity: 0.55, transition: 'opacity 0.4s ease, transform 0.6s ease',
-            }}
-            onError={(e) => { e.target.style.display = 'none'; }}
-        />
-        {/* Gradient overlay */}
         <div style={{
-            position: 'absolute', inset: 0,
-            background: featured
-                ? 'linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.3) 60%, transparent 100%)'
-                : 'linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 70%)',
+            position: 'absolute', right: '-20px', top: '-20px', width: '120px', height: '120px', borderRadius: '32px',
+            background: 'linear-gradient(135deg, rgba(255,255,255,0.16), rgba(255,255,255,0.03))', transform: 'rotate(18deg)', border: '1px solid rgba(255,255,255,0.08)'
         }} />
-        {/* Tag */}
-        {featured && (
-            <div style={{
-                position: 'absolute', top: '20px', left: '20px',
-                background: 'rgba(255,255,255,0.15)', backdropFilter: 'blur(8px)',
-                border: '1px solid rgba(255,255,255,0.25)', borderRadius: '99px',
-                padding: '5px 14px', fontSize: '11px', fontWeight: 700,
-                color: '#fff', letterSpacing: '0.8px', textTransform: 'uppercase',
-            }}>New</div>
-        )}
-        {/* Text */}
-        <div style={{
-            position: 'absolute', bottom: featured ? '28px' : '20px',
-            left: featured ? '28px' : '18px', right: featured ? '28px' : '18px',
-            color: '#fff', zIndex: 1,
-        }}>
-            <h3 style={{ fontSize: titleSize, fontWeight: 800, marginBottom: '6px', lineHeight: 1.2 }}>{item.name}</h3>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                <p style={{ fontSize: '12px', opacity: 0.75, flex: 1 }}>{item.description}</p>
-                {featured && (
-                    <div style={{
-                        width: '32px', height: '32px', borderRadius: '50%', background: 'rgba(255,255,255,0.2)',
-                        backdropFilter: 'blur(4px)', display: 'flex', alignItems: 'center',
-                        justifyContent: 'center', flexShrink: 0, border: '1px solid rgba(255,255,255,0.3)',
-                    }}>
-                        <ArrowRight style={{ width: '15px', height: '15px' }} />
-                    </div>
-                )}
-            </div>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '12px', position: 'relative', zIndex: 1 }}>
+            <span style={{ display: 'inline-flex', padding: '6px 10px', borderRadius: '999px', background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.1)', color: '#99f6e4', fontSize: '11px', fontWeight: 800, letterSpacing: '0.8px', textTransform: 'uppercase' }}>
+                Sector 0{index + 1}
+            </span>
+            <ArrowUpRight style={{ width: '18px', height: '18px', color: '#99f6e4' }} />
+        </div>
+        <div style={{ position: 'relative', zIndex: 1 }}>
+            <h3 style={{ fontSize: '24px', fontWeight: 900, marginBottom: '10px', lineHeight: 1.15 }}>{item.title}</h3>
+            <p style={{ fontSize: '14px', opacity: 0.84, lineHeight: 1.8 }}>{item.description}</p>
         </div>
     </div>
 );
@@ -65,49 +43,52 @@ const NewArrivals = () => {
         const ctx = gsap.context(() => {
             gsap.from(sectionRef.current.querySelectorAll('.arrival-card'), {
                 scrollTrigger: { trigger: sectionRef.current, start: 'top 80%' },
-                opacity: 0, y: 60, duration: 0.9, stagger: 0.15, ease: 'power3.out',
+                opacity: 0,
+                y: 52,
+                duration: 0.85,
+                stagger: 0.1,
+                ease: 'power3.out',
             });
         }, sectionRef);
         return () => ctx.revert();
     }, []);
 
     return (
-        <section ref={sectionRef} style={{
-            padding: '72px 0', backgroundColor: '#fff', borderTop: '1px solid #f1f5f9',
-        }} id="new">
-            <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px' }}>
-                {/* Section label */}
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
+        <section ref={sectionRef} style={{ padding: '76px 0', backgroundColor: '#fff', borderTop: '1px solid #e2e8f0' }} id="industries">
+            <div style={{ maxWidth: '1240px', margin: '0 auto', padding: '0 24px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
                     <div className="section-accent-bar" style={{ height: '26px' }} />
-                    <span style={{
-                        color: '#2563eb', fontSize: '13.5px', fontWeight: 700, letterSpacing: '0.5px',
-                        textTransform: 'uppercase',
-                    }}>Featured</span>
+                    <span style={{ color: '#0f766e', fontSize: '13.5px', fontWeight: 700, letterSpacing: '0.5px', textTransform: 'uppercase' }}>Industries We Serve</span>
                 </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '36px' }}>
-                    <Sparkles style={{ width: '22px', height: '22px', color: '#fbbf24' }} />
-                    <h2 style={{ fontSize: '30px', fontWeight: 900, color: '#0f172a', letterSpacing: '-0.5px' }}>New Arrival</h2>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px' }}>
+                    <BriefcaseBusiness style={{ width: '22px', height: '22px', color: '#c08428' }} />
+                    <h2 style={{ fontSize: '32px', fontWeight: 900, color: '#0f172a', letterSpacing: '-0.5px' }}>Built for diverse production environments</h2>
+                </div>
+                <p style={{ maxWidth: '840px', color: '#64748b', fontSize: '15px', lineHeight: 1.8, marginBottom: '30px' }}>
+                    Kenjal machinery is deployed across packaging, bottling, processing, and utility workflows for food, beverage, pharma, FMCG, cosmetic, and industrial operations.
+                </p>
+
+                <div className="arrivals-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '20px', marginBottom: '28px' }}>
+                    {featuredIndustries.map((item, index) => (
+                        <IndustryCard key={item.title} item={item} index={index} />
+                    ))}
                 </div>
 
-                {/* Asymmetric Grid */}
-                <div className="arrivals-grid" style={{
-                    display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', height: '620px'
-                }}>
-                    <ArrivalCard item={newArrivals[0]} titleSize="26px" featured={true} style={{ minHeight: '100%' }} />
-                    <div style={{ display: 'grid', gridTemplateRows: '1fr 1fr', gap: '20px' }}>
-                        <ArrivalCard item={newArrivals[1]} titleSize="20px" />
-                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
-                            <ArrivalCard item={newArrivals[2]} titleSize="14px" />
-                            <ArrivalCard item={newArrivals[3]} titleSize="14px" />
-                        </div>
+                <div style={{ padding: '24px', borderRadius: '24px', background: '#f8fafc', border: '1px solid #e2e8f0' }}>
+                    <p style={{ fontSize: '12px', color: '#0f766e', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '14px' }}>Complete coverage</p>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+                        {industriesServed.map((industry) => (
+                            <span key={industry} style={{ padding: '10px 12px', borderRadius: '999px', backgroundColor: '#fff', border: '1px solid #e2e8f0', color: '#334155', fontSize: '12px', fontWeight: 700 }}>
+                                {industry}
+                            </span>
+                        ))}
                     </div>
                 </div>
             </div>
 
             <style>{`
                 @media (max-width: 768px) {
-                    .arrivals-grid { grid-template-columns: 1fr !important; height: auto !important; }
-                    .arrivals-grid > div:first-child { min-height: 320px !important; }
+                    .arrivals-grid { grid-template-columns: 1fr !important; }
                 }
             `}</style>
         </section>

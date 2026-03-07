@@ -1,84 +1,152 @@
-import { Heart, Eye, ShoppingCart } from 'lucide-react';
-import { useState } from 'react';
+import { ArrowUpRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
+
+const categoryStyles = {
+    'Water Treatment Systems': {
+        background: 'linear-gradient(135deg, #d1fae5, #ecfeff)',
+        accent: '#0f766e',
+    },
+    'Beverage Processing Equipment': {
+        background: 'linear-gradient(135deg, #dbeafe, #ecfeff)',
+        accent: '#0284c7',
+    },
+    'Bottling Machines': {
+        background: 'linear-gradient(135deg, #cffafe, #e0f2fe)',
+        accent: '#0e7490',
+    },
+    'Filling Machines': {
+        background: 'linear-gradient(135deg, #fef3c7, #fff7ed)',
+        accent: '#b45309',
+    },
+    'PET Bottle Manufacturing Machines': {
+        background: 'linear-gradient(135deg, #e0f2fe, #f0fdfa)',
+        accent: '#0f766e',
+    },
+    'Packaging Machines': {
+        background: 'linear-gradient(135deg, #fee2e2, #fff7ed)',
+        accent: '#c2410c',
+    },
+    'Labeling & Printing Machines': {
+        background: 'linear-gradient(135deg, #bae6fd, #dbeafe)',
+        accent: '#0369a1',
+    },
+    'Industrial Pumps': {
+        background: 'linear-gradient(135deg, #e2e8f0, #f8fafc)',
+        accent: '#334155',
+    },
+};
 
 const ProductCard = ({ product }) => {
-    const [liked, setLiked] = useState(false);
+    const style = categoryStyles[product.category] || categoryStyles['Beverage Processing Equipment'];
 
     return (
-        <div className="product-card" style={{ position: 'relative', cursor: 'pointer', background: '#fff' }}>
-            {/* Image area */}
-            <div style={{
-                position: 'relative',
-                background: 'linear-gradient(135deg, #f8fafc, #f0f9ff)',
-                borderRadius: '12px 12px 0 0',
-                overflow: 'hidden', aspectRatio: '1', display: 'flex',
-                alignItems: 'center', justifyContent: 'center', padding: '20px',
-            }}>
-                <img
-                    src={product.image} alt={product.name}
-                    style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }}
-                    onError={(e) => {
-                        e.target.style.display = 'none';
-                        e.target.parentElement.innerHTML += '<span style="color:#cbd5e1;font-size:12px;font-weight:500">No Image</span>';
-                    }}
-                />
-
-
-
-                {/* Action icons */}
+        <Link to={`/product/${product.id}`} state={{ product }} style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}>
+            <div className="product-card" style={{ position: 'relative', cursor: 'pointer', background: '#fff', minHeight: '100%' }}>
                 <div style={{
-                    position: 'absolute', top: '10px', right: '10px',
-                    display: 'flex', flexDirection: 'column', gap: '6px', zIndex: 3,
+                    position: 'relative',
+                    background: style.background,
+                    borderRadius: '18px 18px 0 0',
+                    overflow: 'hidden',
+                    minHeight: '220px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between',
+                    padding: '18px',
                 }}>
-                    <button
-                        className="icon-hover"
-                        onClick={(e) => { e.stopPropagation(); setLiked(l => !l); }}
-                        style={{
-                            width: '32px', height: '32px', borderRadius: '50%', backgroundColor: '#fff',
-                            boxShadow: '0 2px 12px rgba(15,23,42,0.12)', display: 'flex', alignItems: 'center',
-                            justifyContent: 'center', border: 'none', cursor: 'pointer',
-                            transition: 'transform 0.25s cubic-bezier(0.34,1.56,0.64,1)',
-                        }}
-                    >
-                        <Heart style={{
-                            width: '14px', height: '14px',
-                            color: liked ? '#ef4444' : '#94a3b8',
-                            fill: liked ? '#ef4444' : 'none',
-                            transition: 'all 0.2s',
+                    <div style={{ display: 'flex', justifyContent: 'space-between', gap: '12px', alignItems: 'flex-start' }}>
+                        <span style={{
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            padding: '6px 10px',
+                            borderRadius: '999px',
+                            backgroundColor: 'rgba(255,255,255,0.78)',
+                            color: style.accent,
+                            fontSize: '10.5px',
+                            fontWeight: 800,
+                            letterSpacing: '0.5px',
+                            textTransform: 'uppercase',
+                            border: '1px solid rgba(255,255,255,0.85)',
+                        }}>
+                            {product.category}
+                        </span>
+                        <div style={{
+                            width: '42px',
+                            height: '42px',
+                            borderRadius: '14px',
+                            backgroundColor: 'rgba(15,23,42,0.08)',
+                            color: style.accent,
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            fontSize: '12px',
+                            fontWeight: 900,
+                            letterSpacing: '0.8px',
+                        }}>
+                            {product.shortCode}
+                        </div>
+                    </div>
+
+                    <div style={{ position: 'relative', minHeight: '90px' }}>
+                        <div style={{
+                            position: 'absolute',
+                            right: '-14px',
+                            bottom: '-30px',
+                            width: '120px',
+                            height: '120px',
+                            borderRadius: '32px',
+                            border: '1px solid rgba(15,23,42,0.08)',
+                            background: 'linear-gradient(135deg, rgba(255,255,255,0.55), rgba(255,255,255,0.08))',
+                            transform: 'rotate(16deg)',
                         }} />
-                    </button>
-                    <button className="icon-hover" style={{
-                        width: '32px', height: '32px', borderRadius: '50%', backgroundColor: '#fff',
-                        boxShadow: '0 2px 12px rgba(15,23,42,0.12)', display: 'flex', alignItems: 'center',
-                        justifyContent: 'center', border: 'none', cursor: 'pointer',
+                        <div style={{
+                            position: 'absolute',
+                            left: '0',
+                            bottom: '0',
+                            width: '96px',
+                            height: '96px',
+                            borderRadius: '24px',
+                            border: '1px solid rgba(15,23,42,0.08)',
+                            background: 'rgba(255,255,255,0.35)',
+                        }} />
+                    </div>
+
+                    <div className="add-to-cart-bar" style={{
+                        position: 'absolute', bottom: 0, left: 0, right: 0, zIndex: 2,
+                        background: 'linear-gradient(135deg, #0f766e, #0d9488)',
+                        color: '#fff', textAlign: 'center',
+                        padding: '12px 16px', fontSize: '12.5px', fontWeight: 700,
+                        letterSpacing: '0.4px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '7px',
                     }}>
-                        <Eye style={{ width: '14px', height: '14px', color: '#94a3b8' }} />
-                    </button>
+                        View Details
+                        <ArrowUpRight style={{ width: '14px', height: '14px' }} />
+                    </div>
                 </div>
 
-                {/* Add To Cart bar */}
-                <div className="add-to-cart-bar" style={{
-                    position: 'absolute', bottom: 0, left: 0, right: 0, zIndex: 2,
-                    background: 'linear-gradient(135deg, #0f172a, #1e293b)',
-                    color: '#fff', textAlign: 'center',
-                    padding: '11px 0', fontSize: '12.5px', fontWeight: 700, cursor: 'pointer',
-                    letterSpacing: '0.5px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '7px',
-                }}>
-                    <ShoppingCart style={{ width: '14px', height: '14px' }} />
-                    Add To Cart
+                <div style={{ padding: '18px 18px 16px', display: 'grid', gap: '10px' }}>
+                    <p style={{
+                        fontSize: '16px', color: '#0f172a', fontWeight: 700,
+                        lineHeight: 1.35,
+                        minHeight: '44px',
+                    }}>
+                        {product.name}
+                    </p>
+                    <p style={{
+                        fontSize: '13.5px', color: '#64748b', lineHeight: 1.6,
+                        minHeight: '66px',
+                    }}>
+                        {product.summary}
+                    </p>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '10px', paddingTop: '8px', borderTop: '1px solid #e2e8f0' }}>
+                        <span style={{ fontSize: '11px', color: '#0f766e', fontWeight: 800, letterSpacing: '0.4px', textTransform: 'uppercase' }}>
+                            Capacity
+                        </span>
+                        <span style={{ fontSize: '12px', color: '#0f172a', fontWeight: 700, textAlign: 'right' }}>
+                            {product.capacity}
+                        </span>
+                    </div>
                 </div>
             </div>
-
-            {/* Info */}
-            <div style={{ padding: '14px 14px 12px' }}>
-                <p style={{
-                    fontSize: '13.5px', color: '#0f172a', fontWeight: 600,
-                    overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', lineHeight: 1.4,
-                }}>
-                    {product.name}
-                </p>
-            </div>
-        </div>
+        </Link>
     );
 };
 
