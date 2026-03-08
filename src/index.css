@@ -180,6 +180,85 @@ h1, h2, h3, h4, h5, h6 {
     animation: fadeInUp 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
+/* Page reveal + stagger utilities */
+@keyframes riseIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.995);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes softSlideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.reveal-up {
+    opacity: 0;
+    animation: riseIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.reveal-down {
+    opacity: 0;
+    animation: softSlideDown 0.45s ease forwards;
+}
+
+.delay-1 { animation-delay: 0.08s; }
+.delay-2 { animation-delay: 0.16s; }
+.delay-3 { animation-delay: 0.24s; }
+.delay-4 { animation-delay: 0.32s; }
+.delay-5 { animation-delay: 0.4s; }
+
+.hover-lift-soft {
+    transition: transform 0.24s ease, box-shadow 0.24s ease, border-color 0.24s ease;
+}
+
+.hover-lift-soft:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 28px rgba(2, 6, 23, 0.08);
+}
+
+.hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 36px rgba(2, 6, 23, 0.1);
+}
+
+.btn-animated {
+    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.btn-animated:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.02);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .reveal-up,
+    .reveal-down,
+    .hover-lift,
+    .hover-lift-soft,
+    .btn-animated {
+        animation: none !important;
+        transition: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}
+
 /* ─── Responsive utility: products grid ─── */
 @media (max-width: 1024px) {
     .page-products-grid { grid-template-columns: repeat(3, 1fr) !important; }

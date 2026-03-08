@@ -1,206 +1,179 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { MapPin, Phone, Mail, Globe, MessageCircle, ArrowUpRight, Building2 } from 'lucide-react';
+import { MessageCircle, Phone, Mail, MapPin, Globe, Send } from 'lucide-react';
+
+const CONTACT_NUMBER = '8686154646';
+const WHATSAPP_LINK = `https://wa.me/91${CONTACT_NUMBER}`;
 
 const ContactPage = () => {
-    const [query, setQuery] = useState('');
+  const [query, setQuery] = useState('');
 
-    const handleWhatsApp = () => {
-        const text = encodeURIComponent(query || 'Hello, I would like to enquire about Kenjal Industries machinery.');
-        window.open(`https://wa.me/918686154646?text=${text}`, '_blank', 'noopener noreferrer');
-    };
+  const handleWhatsAppSend = () => {
+    const text = encodeURIComponent(query || 'Hi, I want to know more about Kenjal products.');
+    window.open(`${WHATSAPP_LINK}?text=${text}`, '_blank');
+  };
 
-    return (
-        <>
-            {/* Hero Banner */}
-            <section style={{
-                background: 'linear-gradient(135deg, #07111f 0%, #0f172a 44%, #134e4a 100%)',
-                padding: '80px 24px 88px', position: 'relative', overflow: 'hidden',
-            }}>
-                <div style={{ position: 'absolute', top: '-80px', right: '-80px', width: '340px', height: '340px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(45,212,191,0.14), transparent 70%)', filter: 'blur(40px)', pointerEvents: 'none' }} />
-                <div style={{ maxWidth: '1240px', margin: '0 auto', position: 'relative', zIndex: 1, textAlign: 'center' }}>
-                    <p style={{ color: '#99f6e4', fontSize: '12px', fontWeight: 700, letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '16px' }}>
-                        <Link to="/" style={{ color: '#99f6e4', textDecoration: 'none' }}>Home</Link>
-                        <span style={{ margin: '0 8px' }}>/</span>
-                        <span style={{ color: '#fff' }}>Contact Us</span>
-                    </p>
-                    <h1 style={{ fontSize: '52px', fontWeight: 900, color: '#fff', letterSpacing: '-1.5px', marginBottom: '16px', lineHeight: 1.06 }}>
-                        Let's Talk Business
-                    </h1>
-                    <p style={{ color: '#cbd5e1', fontSize: '17px', lineHeight: 1.8, maxWidth: '560px', margin: '0 auto' }}>
-                        Reach out for product enquiries, project consultations, custom machinery quotes, or after-sales support.
-                    </p>
+  return (
+    <section style={{ background: '#f8f7f4', minHeight: '72vh' }}>
+      <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '44px 20px 72px' }}>
+        <p className="reveal-up" style={{ textAlign: 'center', color: '#52525b', letterSpacing: '1.2px', fontSize: '12px', textTransform: 'uppercase', fontWeight: 700, marginBottom: '12px' }}>
+          Contact Us
+        </p>
+
+        <h1 className="contact-title reveal-up delay-1" style={{ textAlign: 'center', color: '#0f172a', fontSize: '46px', lineHeight: 1.04, fontWeight: 800, marginBottom: '16px' }}>
+          Let's Talk Business
+        </h1>
+
+        <p className="reveal-up delay-2" style={{ textAlign: 'center', color: '#3f3f46', fontSize: '17px', lineHeight: 1.65, maxWidth: '600px', margin: '0 auto 36px' }}>
+          Reach out for product enquiries, project consultations, custom machinery quotes, or after-sales support.
+        </p>
+
+        {/* ─── Office Cards ─── */}
+        <div className="office-grid reveal-up delay-2" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '18px', marginBottom: '24px' }}>
+          {/* Head Office */}
+          <article style={{ background: 'linear-gradient(135deg, #0f172a, #134e4a)', borderRadius: '22px', padding: '28px', color: '#fff' }}>
+            <span style={{ display: 'inline-block', background: 'rgba(153,246,228,0.15)', border: '1px solid rgba(153,246,228,0.25)', borderRadius: '999px', padding: '5px 14px', fontSize: '11px', fontWeight: 800, color: '#5eead4', textTransform: 'uppercase', letterSpacing: '0.8px', marginBottom: '16px' }}>
+              🏢 Head Office
+            </span>
+            <h2 style={{ fontSize: '24px', fontWeight: 800, marginBottom: '18px' }}>Gurugram, Haryana</h2>
+            <div style={{ display: 'grid', gap: '12px' }}>
+              <div style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
+                <MapPin style={{ width: '16px', height: '16px', color: '#5eead4', marginTop: '3px', flexShrink: 0 }} />
+                <span style={{ fontSize: '14px', lineHeight: 1.6, color: '#cbd5e1' }}>DLF Phase-3, 27/11<br />Gurugram, Haryana – 122002</span>
+              </div>
+              <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+                <Phone style={{ width: '16px', height: '16px', color: '#5eead4', flexShrink: 0 }} />
+                <a href={`tel:${CONTACT_NUMBER}`} style={{ color: '#fff', textDecoration: 'none', fontSize: '14px', fontWeight: 600 }}>8686-15-4646</a>
+              </div>
+              <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+                <Mail style={{ width: '16px', height: '16px', color: '#5eead4', flexShrink: 0 }} />
+                <a href="mailto:kenjalindustries@gmail.com" style={{ color: '#fff', textDecoration: 'none', fontSize: '14px', fontWeight: 600 }}>kenjalindustries@gmail.com</a>
+              </div>
+              <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+                <Globe style={{ width: '16px', height: '16px', color: '#5eead4', flexShrink: 0 }} />
+                <div style={{ display: 'flex', gap: '12px' }}>
+                  <a href="https://www.kenjal.com" target="_blank" rel="noopener noreferrer" style={{ color: '#94a3b8', textDecoration: 'none', fontSize: '14px' }}>www.kenjal.com ↗</a>
+                  <a href="https://www.kenjal.in" target="_blank" rel="noopener noreferrer" style={{ color: '#94a3b8', textDecoration: 'none', fontSize: '14px' }}>www.kenjal.in ↗</a>
                 </div>
-            </section>
+              </div>
+            </div>
+          </article>
 
-            {/* Offices + Contact */}
-            <section style={{ backgroundColor: '#f8fafc', padding: '72px 24px' }}>
-                <div style={{ maxWidth: '1240px', margin: '0 auto' }}>
-                    <div className="contact-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '28px', marginBottom: '28px' }}>
+          {/* Branch Office */}
+          <article style={{ background: '#fff', border: '1px solid #e5e7eb', borderRadius: '22px', padding: '28px' }}>
+            <span style={{ display: 'inline-block', background: '#f0fdf4', border: '1px solid #dcfce7', borderRadius: '999px', padding: '5px 14px', fontSize: '11px', fontWeight: 800, color: '#16a34a', textTransform: 'uppercase', letterSpacing: '0.8px', marginBottom: '16px' }}>
+              🏢 Branch Office
+            </span>
+            <h2 style={{ fontSize: '24px', fontWeight: 800, color: '#0f172a', marginBottom: '18px' }}>Patna, Bihar</h2>
+            <div style={{ display: 'grid', gap: '12px', marginBottom: '20px' }}>
+              <div style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
+                <MapPin style={{ width: '16px', height: '16px', color: '#16a34a', marginTop: '3px', flexShrink: 0 }} />
+                <span style={{ fontSize: '14px', lineHeight: 1.6, color: '#475569' }}>Plot 24, Road 4<br />Krishnachandra Nagar, Near Zero Mile<br />Patna, Bihar</span>
+              </div>
+            </div>
+            <div style={{ background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: '14px', padding: '16px' }}>
+              <p style={{ fontSize: '12px', fontWeight: 800, color: '#0f172a', textTransform: 'uppercase', letterSpacing: '0.6px', marginBottom: '6px' }}>Channel Partner (All Bihar)</p>
+              <p style={{ fontSize: '13px', color: '#64748b', lineHeight: 1.6 }}>Aradhya Aqua Industry handles Kenjal distribution across the Bihar region from this location.</p>
+            </div>
+          </article>
+        </div>
 
-                        {/* Head Office */}
-                        <div style={{ padding: '36px', borderRadius: '28px', background: 'linear-gradient(135deg, #07111f, #0f172a)', border: '1px solid rgba(153,246,228,0.12)', position: 'relative', overflow: 'hidden' }}>
-                            <div style={{ position: 'absolute', top: '-40px', right: '-40px', width: '160px', height: '160px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(45,212,191,0.15), transparent 70%)' }} />
-                            <div style={{ position: 'relative', zIndex: 1 }}>
-                                <div style={{ display: 'inline-flex', alignItems: 'center', gap: '7px', background: 'rgba(153,246,228,0.1)', border: '1px solid rgba(153,246,228,0.16)', color: '#99f6e4', fontWeight: 700, fontSize: '10px', padding: '5px 12px', borderRadius: '999px', marginBottom: '18px', letterSpacing: '1.2px', textTransform: 'uppercase' }}>
-                                    <Building2 style={{ width: '11px', height: '11px' }} /> Head Office
-                                </div>
-                                <h3 style={{ color: '#fff', fontSize: '22px', fontWeight: 800, marginBottom: '20px' }}>Gurugram, Haryana</h3>
-                                <div style={{ display: 'flex', gap: '12px', marginBottom: '14px' }}>
-                                    <MapPin style={{ width: '16px', height: '16px', color: '#99f6e4', flexShrink: 0, marginTop: '2px' }} />
-                                    <p style={{ color: '#94a3b8', fontSize: '15px', lineHeight: 1.8 }}>DLF Phase-3, 27/11<br />Gurugram, Haryana – 122002</p>
-                                </div>
-                                <div style={{ display: 'flex', gap: '12px', marginBottom: '14px' }}>
-                                    <Phone style={{ width: '16px', height: '16px', color: '#99f6e4', flexShrink: 0, marginTop: '3px' }} />
-                                    <a href="tel:8686154646" style={{ color: '#94a3b8', fontSize: '15px', textDecoration: 'none' }}>8686-15-4646</a>
-                                </div>
-                                <div style={{ display: 'flex', gap: '12px', marginBottom: '14px' }}>
-                                    <Mail style={{ width: '16px', height: '16px', color: '#99f6e4', flexShrink: 0, marginTop: '3px' }} />
-                                    <a href="mailto:kenjalindustries@gmail.com" style={{ color: '#94a3b8', fontSize: '15px', textDecoration: 'none', wordBreak: 'break-all' }}>kenjalindustries@gmail.com</a>
-                                </div>
-                                <div style={{ display: 'flex', gap: '12px' }}>
-                                    <Globe style={{ width: '16px', height: '16px', color: '#99f6e4', flexShrink: 0, marginTop: '3px' }} />
-                                    <div>
-                                        <a href="https://www.kenjal.com" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '4px', color: '#94a3b8', fontSize: '15px', textDecoration: 'none', marginBottom: '4px' }}>
-                                            www.kenjal.com <ArrowUpRight style={{ width: '13px', height: '13px' }} />
-                                        </a>
-                                        <a href="https://www.kenjal.in" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '4px', color: '#94a3b8', fontSize: '15px', textDecoration: 'none' }}>
-                                            www.kenjal.in <ArrowUpRight style={{ width: '13px', height: '13px' }} />
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+        {/* ─── Quick Contact Row ─── */}
+        <div className="contact-quick-row reveal-up delay-3" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '14px', marginBottom: '28px' }}>
+          <a href={`tel:${CONTACT_NUMBER}`} className="hover-lift-soft" style={{ display: 'flex', alignItems: 'center', gap: '12px', justifyContent: 'center', background: '#fff', border: '1px solid #e5e7eb', borderRadius: '16px', padding: '18px', textDecoration: 'none' }}>
+            <Phone style={{ width: '18px', height: '18px', color: '#0f766e' }} />
+            <div>
+              <p style={{ fontSize: '11px', color: '#71717a', textTransform: 'uppercase', letterSpacing: '0.8px', fontWeight: 700 }}>Call Us</p>
+              <p style={{ fontSize: '16px', color: '#0f172a', fontWeight: 700 }}>8686-15-4646</p>
+            </div>
+          </a>
+          <a href="mailto:kenjalindustries@gmail.com" className="hover-lift-soft" style={{ display: 'flex', alignItems: 'center', gap: '12px', justifyContent: 'center', background: '#fff', border: '1px solid #e5e7eb', borderRadius: '16px', padding: '18px', textDecoration: 'none' }}>
+            <Mail style={{ width: '18px', height: '18px', color: '#0f766e' }} />
+            <div>
+              <p style={{ fontSize: '11px', color: '#71717a', textTransform: 'uppercase', letterSpacing: '0.8px', fontWeight: 700 }}>Email Us</p>
+              <p style={{ fontSize: '16px', color: '#0f172a', fontWeight: 700 }}>kenjalindustries@gmail.com</p>
+            </div>
+          </a>
+          <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="hover-lift-soft" style={{ display: 'flex', alignItems: 'center', gap: '12px', justifyContent: 'center', background: '#fff', border: '1px solid #e5e7eb', borderRadius: '16px', padding: '18px', textDecoration: 'none' }}>
+            <MessageCircle style={{ width: '18px', height: '18px', color: '#16a34a' }} />
+            <div>
+              <p style={{ fontSize: '11px', color: '#71717a', textTransform: 'uppercase', letterSpacing: '0.8px', fontWeight: 700 }}>WhatsApp</p>
+              <p style={{ fontSize: '16px', color: '#0f172a', fontWeight: 700 }}>+91 {CONTACT_NUMBER}</p>
+            </div>
+          </a>
+        </div>
 
-                        {/* Branch Office */}
-                        <div style={{ padding: '36px', borderRadius: '28px', background: '#fff', border: '1px solid #e2e8f0', position: 'relative', overflow: 'hidden' }}>
-                            <div style={{ position: 'absolute', top: '-40px', right: '-40px', width: '150px', height: '150px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(251,191,36,0.08), transparent 70%)' }} />
-                            <div style={{ position: 'relative', zIndex: 1 }}>
-                                <div style={{ display: 'inline-flex', alignItems: 'center', gap: '7px', background: 'rgba(251,191,36,0.1)', border: '1px solid rgba(251,191,36,0.18)', color: '#b45309', fontWeight: 700, fontSize: '10px', padding: '5px 12px', borderRadius: '999px', marginBottom: '18px', letterSpacing: '1.2px', textTransform: 'uppercase' }}>
-                                    <Building2 style={{ width: '11px', height: '11px' }} /> Branch Office
-                                </div>
-                                <h3 style={{ color: '#0f172a', fontSize: '22px', fontWeight: 800, marginBottom: '20px' }}>Patna, Bihar</h3>
-                                <div style={{ display: 'flex', gap: '12px', marginBottom: '14px' }}>
-                                    <MapPin style={{ width: '16px', height: '16px', color: '#0d9488', flexShrink: 0, marginTop: '2px' }} />
-                                    <p style={{ color: '#475569', fontSize: '15px', lineHeight: 1.8 }}>Plot 24, Road 4<br />Krishnachandra Nagar, Near Zero Mile<br />Patna, Bihar</p>
-                                </div>
-                                <div style={{ marginTop: '28px', padding: '18px', borderRadius: '14px', background: '#f0fdfa', border: '1px solid #ccfbf1' }}>
-                                    <p style={{ color: '#0f172a', fontSize: '13px', fontWeight: 700, marginBottom: '8px' }}>Channel Partner (All Bihar)</p>
-                                    <p style={{ color: '#475569', fontSize: '14px', lineHeight: 1.7 }}>Aradhya Aqua Industry handles Kenjal distribution across the Bihar region from this location.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        {/* ─── WhatsApp Query + Map ─── */}
+        <div className="query-map-grid reveal-up delay-3" style={{ display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: '18px' }}>
+          {/* WhatsApp Quick Query */}
+          <div style={{ background: '#0f172a', borderRadius: '22px', padding: '28px', color: '#fff', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+            <div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '6px' }}>
+                <MessageCircle style={{ width: '20px', height: '20px', color: '#5eead4' }} />
+                <h3 style={{ fontSize: '20px', fontWeight: 800 }}>WhatsApp Quick Query</h3>
+              </div>
+              <p style={{ fontSize: '13px', color: '#94a3b8', marginBottom: '20px' }}>Typical response within a few hours</p>
+              <textarea
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder="Describe the machine or plant you need, capacity requirements, industry, or any other details..."
+                style={{
+                  width: '100%', minHeight: '120px', background: '#1e293b', border: '1px solid #334155',
+                  borderRadius: '14px', padding: '16px', color: '#fff', fontSize: '14px', lineHeight: 1.6,
+                  resize: 'vertical', fontFamily: 'inherit', outline: 'none',
+                }}
+              />
+            </div>
+            <div style={{ marginTop: '18px' }}>
+              <button
+                onClick={handleWhatsAppSend}
+                className="btn-animated"
+                style={{
+                  width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px',
+                  background: '#16a34a', color: '#fff', border: 'none', borderRadius: '14px',
+                  padding: '14px 24px', fontWeight: 700, fontSize: '15px', cursor: 'pointer',
+                  boxShadow: '0 8px 20px rgba(22,163,74,0.3)',
+                }}
+              >
+                <Send style={{ width: '16px', height: '16px' }} />
+                Send on WhatsApp
+              </button>
+              <p style={{ fontSize: '11px', color: '#64748b', marginTop: '10px', textAlign: 'center' }}>
+                Opens WhatsApp with your message pre-filled for +91 {CONTACT_NUMBER}
+              </p>
+            </div>
+          </div>
 
-                    {/* Quick contact cards */}
-                    <div className="quick-contact-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px' }}>
-                        {[
-                            { icon: Phone, label: 'Call Us', value: '8686-15-4646', href: 'tel:8686154646', color: '#0d9488' },
-                            { icon: Mail, label: 'Email Us', value: 'kenjalindustries@gmail.com', href: 'mailto:kenjalindustries@gmail.com', color: '#0d9488' },
-                            { icon: MessageCircle, label: 'WhatsApp', value: '+91 8686154646', href: 'https://wa.me/918686154646', color: '#16a34a', newTab: true },
-                        ].map(({ icon: Icon, label, value, href, color, newTab }) => (
-                            <a
-                                key={label} href={href}
-                                target={newTab ? '_blank' : undefined}
-                                rel={newTab ? 'noopener noreferrer' : undefined}
-                                style={{ display: 'flex', alignItems: 'center', gap: '16px', padding: '22px 24px', borderRadius: '18px', background: '#fff', border: '1px solid #e2e8f0', textDecoration: 'none', transition: 'all 0.2s' }}
-                                onMouseEnter={e => { e.currentTarget.style.borderColor = color; e.currentTarget.style.transform = 'translateY(-3px)'; e.currentTarget.style.boxShadow = `0 6px 24px ${color}18`; }}
-                                onMouseLeave={e => { e.currentTarget.style.borderColor = '#e2e8f0'; e.currentTarget.style.transform = 'none'; e.currentTarget.style.boxShadow = 'none'; }}
-                            >
-                                <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: `${color}12`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                                    <Icon style={{ width: '20px', height: '20px', color }} />
-                                </div>
-                                <div>
-                                    <p style={{ color: '#64748b', fontSize: '12px', fontWeight: 700, letterSpacing: '0.8px', textTransform: 'uppercase', marginBottom: '4px' }}>{label}</p>
-                                    <p style={{ color: '#0f172a', fontSize: '14px', fontWeight: 600, wordBreak: 'break-all' }}>{value}</p>
-                                </div>
-                            </a>
-                        ))}
-                    </div>
-                </div>
-            </section>
+          {/* Google Map */}
+          <div style={{ borderRadius: '22px', overflow: 'hidden', border: '1px solid #e5e7eb', minHeight: '380px' }}>
+            <iframe
+              title="Kenjal Industries Head Office"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3507.123456789!2d77.09!3d28.47!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sDLF+Phase+3%2C+Sector+24%2C+Gurugram%2C+Haryana!5e0!3m2!1sen!2sin!4v1234567890"
+              width="100%"
+              height="100%"
+              style={{ border: 0, minHeight: '380px' }}
+              allowFullScreen=""
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </div>
+        </div>
+      </div>
 
-            {/* WhatsApp Query + Map */}
-            <section style={{ backgroundColor: '#fff', padding: '72px 24px', borderTop: '1px solid #f1f5f9' }}>
-                <div style={{ maxWidth: '1240px', margin: '0 auto' }}>
-                    <div className="wa-map-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1.4fr', gap: '36px', alignItems: 'start' }}>
-
-                        {/* WhatsApp form */}
-                        <div style={{ padding: '36px', borderRadius: '28px', background: 'linear-gradient(135deg, #07111f, #0f172a)', border: '1px solid rgba(153,246,228,0.12)' }}>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '10px' }}>
-                                <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: 'rgba(22,163,74,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                                    <MessageCircle style={{ width: '22px', height: '22px', color: '#4ade80' }} />
-                                </div>
-                                <div>
-                                    <h3 style={{ color: '#fff', fontSize: '20px', fontWeight: 800 }}>WhatsApp Quick Query</h3>
-                                    <p style={{ color: '#94a3b8', fontSize: '13px' }}>Typical response within a few hours</p>
-                                </div>
-                            </div>
-                            <div style={{ height: '1px', background: 'rgba(255,255,255,0.07)', margin: '22px 0' }} />
-                            <textarea
-                                value={query}
-                                onChange={e => setQuery(e.target.value)}
-                                placeholder="Describe the machine or plant you need, capacity requirements, industry, or any other details..."
-                                rows={6}
-                                style={{
-                                    width: '100%', borderRadius: '14px', padding: '16px',
-                                    background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)',
-                                    color: '#e2e8f0', fontSize: '14px', lineHeight: 1.7, resize: 'vertical',
-                                    outline: 'none', fontFamily: 'inherit', boxSizing: 'border-box',
-                                }}
-                                onFocus={e => e.target.style.borderColor = 'rgba(153,246,228,0.4)'}
-                                onBlur={e => e.target.style.borderColor = 'rgba(255,255,255,0.1)'}
-                            />
-                            <button
-                                onClick={handleWhatsApp}
-                                style={{
-                                    marginTop: '14px', width: '100%', padding: '15px',
-                                    background: 'linear-gradient(135deg, #16a34a, #15803d)',
-                                    color: '#fff', fontWeight: 700, fontSize: '15px',
-                                    border: 'none', borderRadius: '14px', cursor: 'pointer',
-                                    display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '9px',
-                                    boxShadow: '0 6px 24px rgba(22,163,74,0.25)', transition: 'all 0.2s',
-                                }}
-                                onMouseEnter={e => e.currentTarget.style.boxShadow = '0 8px 32px rgba(22,163,74,0.4)'}
-                                onMouseLeave={e => e.currentTarget.style.boxShadow = '0 6px 24px rgba(22,163,74,0.25)'}
-                            >
-                                <MessageCircle style={{ width: '18px', height: '18px' }} />
-                                Send on WhatsApp
-                            </button>
-                            <p style={{ color: '#475569', fontSize: '12px', textAlign: 'center', marginTop: '12px', lineHeight: 1.6 }}>
-                                Opens WhatsApp with your message pre-filled for +91 8686154646
-                            </p>
-                        </div>
-
-                        {/* Map */}
-                        <div style={{ borderRadius: '28px', overflow: 'hidden', border: '1px solid #e2e8f0', boxShadow: '0 4px 24px rgba(0,0,0,0.06)', height: '100%', minHeight: '420px' }}>
-                            <iframe
-                                title="Kenjal Industries Head Office — DLF Phase 3, Gurugram"
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3507.0023607265836!2d77.09178167538986!3d28.47044547575491!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d193e68c47ffd%3A0xbcf3b7dbac9c0ddd!2sDLF%20Phase%203%2C%20Sector%2024%2C%20Gurugram%2C%20Haryana%20122022!5e0!3m2!1sen!2sin!4v1709800000000!5m2!1sen!2sin"
-                                width="100%" height="100%" style={{ border: 0, display: 'block', minHeight: '420px' }}
-                                allowFullScreen loading="lazy"
-                                referrerPolicy="no-referrer-when-downgrade"
-                            />
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <style>{`
-                @media (max-width: 1024px) {
-                    .contact-grid { grid-template-columns: 1fr !important; }
-                    .quick-contact-grid { grid-template-columns: 1fr !important; }
-                    .wa-map-grid { grid-template-columns: 1fr !important; }
-                }
-                @media (max-width: 768px) {
-                    .quick-contact-grid { grid-template-columns: 1fr 1fr !important; }
-                }
-                @media (max-width: 520px) {
-                    .quick-contact-grid { grid-template-columns: 1fr !important; }
-                }
-            `}</style>
-        </>
-    );
+      <style>{`
+        @media (max-width: 900px) {
+          .office-grid { grid-template-columns: 1fr !important; }
+          .contact-quick-row { grid-template-columns: 1fr !important; }
+          .query-map-grid { grid-template-columns: 1fr !important; }
+        }
+        @media (max-width: 560px) {
+          .contact-title { font-size: 36px !important; }
+        }
+        @media (max-width: 420px) {
+          .contact-title { font-size: 31px !important; }
+        }
+      `}</style>
+    </section>
+  );
 };
 
 export default ContactPage;
