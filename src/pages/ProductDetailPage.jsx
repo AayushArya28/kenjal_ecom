@@ -78,37 +78,46 @@ const ProductDetailPage = () => {
                             display: 'grid', gap: '24px',
                         }}>
                             <div style={{
-                                minHeight: '320px',
+                                minHeight: '400px',
                                 borderRadius: '24px',
-                                background: 'linear-gradient(135deg, #ecfeff, #f8fafc 42%, #fefce8)',
+                                background: product.image ? '#fff' : 'linear-gradient(135deg, #ecfeff, #f8fafc 42%, #fefce8)',
                                 border: '1px solid #dbe4ea',
-                                padding: '28px',
                                 position: 'relative',
                                 overflow: 'hidden',
                                 display: 'flex',
-                                alignItems: 'flex-end',
-                                justifyContent: 'space-between',
+                                alignItems: 'center',
+                                justifyContent: 'center',
                             }}>
-                                <div style={{ display: 'grid', gap: '12px', position: 'relative', zIndex: 1 }}>
-                                    <span style={{
-                                        display: 'inline-flex', width: 'fit-content', padding: '7px 12px', borderRadius: '999px',
-                                        backgroundColor: '#fff', color: '#0f766e', fontSize: '11px', fontWeight: 800,
-                                        textTransform: 'uppercase', letterSpacing: '0.6px', border: '1px solid #dbe4ea'
-                                    }}>
-                                        {product.category}
-                                    </span>
-                                    <strong style={{ color: '#0f172a', fontSize: '72px', fontWeight: 900, lineHeight: 1, letterSpacing: '-2px' }}>
-                                        {product.shortCode}
-                                    </strong>
-                                    <p style={{ color: '#334155', fontSize: '15px', lineHeight: 1.7, maxWidth: '360px' }}>
-                                        {product.summary}
-                                    </p>
-                                </div>
-                                <div style={{
-                                    width: '180px', height: '180px', borderRadius: '40px',
-                                    background: 'linear-gradient(135deg, rgba(15,23,42,0.08), rgba(255,255,255,0.75))',
-                                    border: '1px solid rgba(15,23,42,0.08)', transform: 'rotate(18deg) translateY(28px)'
-                                }} />
+                                {product.image ? (
+                                    <img
+                                        src={product.image}
+                                        alt={product.name}
+                                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                                    />
+                                ) : (
+                                    <div style={{ padding: '28px', width: '100%', display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between' }}>
+                                        <div style={{ display: 'grid', gap: '12px', position: 'relative', zIndex: 1 }}>
+                                            <span style={{
+                                                display: 'inline-flex', width: 'fit-content', padding: '7px 12px', borderRadius: '999px',
+                                                backgroundColor: '#fff', color: '#0f766e', fontSize: '11px', fontWeight: 800,
+                                                textTransform: 'uppercase', letterSpacing: '0.6px', border: '1px solid #dbe4ea'
+                                            }}>
+                                                {product.category}
+                                            </span>
+                                            <strong style={{ color: '#0f172a', fontSize: '72px', fontWeight: 900, lineHeight: 1, letterSpacing: '-2px' }}>
+                                                {product.shortCode}
+                                            </strong>
+                                            <p style={{ color: '#334155', fontSize: '15px', lineHeight: 1.7, maxWidth: '360px' }}>
+                                                {product.summary}
+                                            </p>
+                                        </div>
+                                        <div style={{
+                                            width: '180px', height: '180px', borderRadius: '40px',
+                                            background: 'linear-gradient(135deg, rgba(15,23,42,0.08), rgba(255,255,255,0.75))',
+                                            border: '1px solid rgba(15,23,42,0.08)', transform: 'rotate(18deg) translateY(28px)'
+                                        }} />
+                                    </div>
+                                )}
                             </div>
 
                             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '14px' }}>

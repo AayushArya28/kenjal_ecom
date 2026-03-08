@@ -2,23 +2,23 @@
 @import "tailwindcss";
 
 @theme {
-    --color-primary: #0d9488;
-    --color-primary-dark: #0f766e;
-    --color-primary-light: #2dd4bf;
+    --color-primary: #00BFFF;
+    --color-primary-dark: #0080FF;
+    --color-primary-light: #87CEEB;
     --color-ink: #0f172a;
     --color-ink-light: #334155;
     --color-ink-muted: #64748b;
     --color-surface: #ffffff;
     --color-surface-2: #f8fafc;
-    --color-teal: #99f6e4;
+    --color-teal: #E0F6FF;
     --color-gold: #fbbf24;
 }
 
 :root {
-    --brand: #0d9488;
-    --brand-dark: #0f766e;
-    --brand-light: #2dd4bf;
-    --brand-teal: #99f6e4;
+    --brand: #00BFFF;
+    --brand-dark: #0080FF;
+    --brand-light: #87CEEB;
+    --brand-teal: #E0F6FF;
     --ink: #0f172a;
     --ink-light: #334155;
     --ink-muted: #64748b;
@@ -33,7 +33,7 @@
     --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
     --shadow-card: 0 2px 12px rgba(0,0,0,0.07);
     --shadow-card-hover: 0 10px 36px rgba(0,0,0,0.1);
-    --shadow-brand: 0 6px 24px rgba(13,148,136,0.28);
+    --shadow-brand: 0 6px 24px rgba(0,191,255,0.28);
 }
 
 *, *::before, *::after {
@@ -70,7 +70,7 @@ h1, h2, h3, h4, h5, h6 {
 .product-card:hover {
     transform: translateY(-6px);
     box-shadow: var(--shadow-card-hover);
-    border-color: #ccfbf1;
+    border-color: #CCE7FF;
 }
 
 .product-card:hover .add-to-cart-bar {
@@ -99,7 +99,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .btn-primary:hover {
     transform: translateY(-2px) scale(1.02);
-    box-shadow: 0 10px 32px rgba(13,148,136,0.35);
+    box-shadow: 0 10px 32px #0E87CC59;
 }
 
 /* ─── Arrow navigation button ─── */
@@ -108,7 +108,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .arrow-btn:hover {
-    background: linear-gradient(135deg, #0d9488, #0f766e) !important;
+    background: linear-gradient(135deg, #0E87CC, #0A6BB8) !important;
     color: #fff !important;
     border-color: transparent !important;
     transform: scale(1.1);
@@ -151,7 +151,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, #0d9488, #0f766e);
+    background: linear-gradient(180deg, #0E87CC, #0A6BB8);
     border-radius: 3px;
 }
 
